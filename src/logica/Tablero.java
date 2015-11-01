@@ -1,8 +1,10 @@
 package logica;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.JLabel;
 
 /**
  *
@@ -10,11 +12,13 @@ import java.util.Collections;
  */
 public class Tablero {
 
+    Timer timer = new Timer();
+
     /**
-     * 
+     *
      * @param filas
      * @param columnas
-     * @return 
+     * @return
      */
     public int[][] construirTablero(int filas, int columnas) {
 
@@ -41,9 +45,38 @@ public class Tablero {
         return matrizAleatoria;
 
     }
-    
-    public boolean analizarJugada(int[][] matrizAleatoria , int[] primeraJugada , int[] segundaJugada){
-        return matrizAleatoria[primeraJugada[0]][primeraJugada[1]] == matrizAleatoria[segundaJugada[0]][segundaJugada[1]];
+
+    public boolean analizarJugada(int[][] matrizAleatoria, int[] primeraJugada, int[] segundaJugada) {
+        if (primeraJugada != null && segundaJugada != null) {
+            return matrizAleatoria[primeraJugada[0]][primeraJugada[1]] == matrizAleatoria[segundaJugada[0]][segundaJugada[1]];
+
+        }
+        return false;
+
+    }
+
+    private void initCronometro() {
+        timer.cancel();
+        timer.purge();
+        timer = new Timer();
+    }
+
+    public void iniciarCronometro(JLabel label) {
+        initCronometro();
+
+        TimerTask timerTask = new TimerTask() {
+            int segundos = 0;
+            public void run() {
+
+                label.setText(String.valueOf(++segundos));
+            }
+        };
+        // Dentro de 0 milisegundos avísame cada 1000 milisegundos
+        timer.scheduleAtFixedRate(timerTask, 0, 1000);
+    }
+
+    public void pararCronometro() {
+        timer.cancel();
     }
 
 }
