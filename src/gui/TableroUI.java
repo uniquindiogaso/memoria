@@ -48,21 +48,24 @@ public class TableroUI extends JFrame implements ActionListener {
 
     public void inicializarComponetes() {
         setLayout(null);
+        setSize(600, 725);
+        setLocationRelativeTo(null);
+        
         btnJugadas = new JButton[FILAS][COLUMNAS];
 
         defaultIcon = new ImageIcon(this.getClass().getResource(IMAGENES + "default.png"));
         lLogo = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "LogoTablero.png")));
-        lLogo.setBounds(0, 5, 600, 66);
+        lLogo.setBounds(0, 5, 600, 60);
         add(lLogo);
 
         lJugadas = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "numjugadas.png")));
-        lJugadas.setBounds(75, 90, 140, 64);
+        lJugadas.setBounds(95, 75, 140, 64);
         add(lJugadas);
         lJugadas.setText("0");
         lJugadas.setFont(new Font("Arial", Font.BOLD, 28));
 
         lTiempo = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "time.png")));
-        lTiempo.setBounds(325, 90, 180, 48);
+        lTiempo.setBounds(320, 80, 180, 48);
         add(lTiempo);
         lTiempo.setText("0");
         lTiempo.setFont(new Font("Arial", Font.BOLD, 28));
@@ -78,36 +81,36 @@ public class TableroUI extends JFrame implements ActionListener {
             for (int j = 0; j < btnJugadas[i].length; j++) {
                 //btnJugadas[i][j] = new JButton(defaultIcon);
                 btnJugadas[i][j] = new JButton("NA");
-                btnJugadas[i][j].setBounds(90 + 102 * j, 180 + 102 * i, 100, 100);
+                //btnJugadas[i][j].setBounds(110 + 95 * j, 150 + 95 * i, 90, 90);
+                btnJugadas[i][j].setBounds(90 + 105 * j, 140 + 105 * i, 100, 100);
                 btnJugadas[i][j].addActionListener(this);
                 add(btnJugadas[i][j]);
             }
         }
 
-        btnReiniciar = new JButton("Reiniciar Partida");
+        /*btnReiniciar = new JButton("Reiniciar Partida");
         btnReiniciar.setBounds(40, 600, 220, 48);
         add(btnReiniciar);
-        btnReiniciar.setFont(new Font("Arial", Font.BOLD, 18));
+        btnReiniciar.setFont(new Font("Arial", Font.BOLD, 18));*/
 
         btnResultados = new JButton("Resultados");
-        btnResultados.setBounds(310, 600, 220, 48);
+        btnResultados.setBounds(60, 625, 220, 48);
         add(btnResultados);
         btnResultados.setFont(new Font("Arial", Font.BOLD, 18));
 
-        btnRepetir = new JButton("Volver a Jugar");
-        btnRepetir.setBounds(40, 665, 220, 48);
+        btnRepetir = new JButton(new ImageIcon(this.getClass().getResource(IMAGENES + "play.png")));
+        btnRepetir.setBounds(190, 565, 220, 48);
         add(btnRepetir);
         btnRepetir.setFont(new Font("Arial", Font.BOLD, 18));
         btnRepetir.addActionListener(this);
     
 
-        btnVolver = new JButton("Volver");
-        btnVolver.setBounds(310, 665, 220, 48);
+        btnVolver = new JButton(new ImageIcon(this.getClass().getResource(IMAGENES + "return.png")));
+        btnVolver.setBounds(310, 625, 220, 48);
         add(btnVolver);
         btnVolver.setFont(new Font("Arial", Font.BOLD, 18));
 
-        setSize(600, 770);
-        setLocationRelativeTo(null);
+        
 
     }
 
