@@ -27,7 +27,6 @@ public class TableroUI extends JFrame implements ActionListener {
     private JLabel lGanador;
     private ImageIcon defaultIcon;
 
-    private JButton btnReiniciar;
     private JButton btnResultados;
     private JButton btnRepetir;
     private JButton btnVolver;
@@ -99,6 +98,7 @@ public class TableroUI extends JFrame implements ActionListener {
         btnResultados.setFont(new Font("Arial", Font.BOLD, 18));
 
         btnRepetir = new JButton(new ImageIcon(this.getClass().getResource(IMAGENES + "play.png")));
+        btnRepetir.setText("Volver a jugar");
         btnRepetir.setBounds(190, 565, 220, 48);
         add(btnRepetir);
         btnRepetir.setFont(new Font("Arial", Font.BOLD, 18));
@@ -106,6 +106,7 @@ public class TableroUI extends JFrame implements ActionListener {
     
 
         btnVolver = new JButton(new ImageIcon(this.getClass().getResource(IMAGENES + "return.png")));
+        btnVolver.setText("Volver");
         btnVolver.setBounds(310, 625, 220, 48);
         add(btnVolver);
         btnVolver.setFont(new Font("Arial", Font.BOLD, 18));
