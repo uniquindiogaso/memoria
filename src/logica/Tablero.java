@@ -1,6 +1,7 @@
 package logica;
 
 import gui.PrincipalUI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Timer;
@@ -89,7 +90,7 @@ public class Tablero {
      * @param pos
      * @return 
      */
-    public String obtenerImagen(String dificultad, int pos) {
-        return PrincipalUI.IMAGENES + "/" + dificultad.toLowerCase() + "/" + pos + ".png";
+    public URL obtenerImagen(String dificultad, int pos) {
+        return this.getClass().getResource(PrincipalUI.IMAGENES + dificultad.toLowerCase() + "/" + pos + ".png");
     }
 }

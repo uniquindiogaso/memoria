@@ -7,7 +7,7 @@ public class Memoria {
 
     public static void main(String[] args) {
 
-        TableroUI par = new TableroUI();
+        TableroUI par = new TableroUI("Facil");
         par.setVisible(true);
 
         /*ConfigPartidaUI con= new ConfigPartidaUI();
