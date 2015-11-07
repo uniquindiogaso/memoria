@@ -20,7 +20,7 @@ import logica.Tablero;
  */
 public class PrincipalUI extends JFrame implements ActionListener {
 
-    private static final String IMAGENES = "../media/imagenes/";
+    public static final String IMAGENES = "../media/imagenes/";
     private JLabel lLogo;
     private JButton btnJugar;
     private JButton btnRegistrar;

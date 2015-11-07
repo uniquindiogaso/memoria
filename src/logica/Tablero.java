@@ -1,5 +1,6 @@
 package logica;
 
+import gui.PrincipalUI;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Timer;
@@ -66,6 +67,7 @@ public class Tablero {
 
         TimerTask timerTask = new TimerTask() {
             int segundos = 0;
+
             public void run() {
 
                 label.setText(String.valueOf(++segundos));
@@ -79,4 +81,15 @@ public class Tablero {
         timer.cancel();
     }
 
+    /**
+     * Obtener Ruta Imagen 
+     * En base a la dificultad y la numero aleatorio se genera 
+     * una cadena que contiene la ruta completa de la imagen
+     * @param dificultad
+     * @param pos
+     * @return 
+     */
+    public String obtenerImagen(String dificultad, int pos) {
+        return PrincipalUI.IMAGENES + "/" + dificultad.toLowerCase() + "/" + pos + ".png";
+    }
 }
