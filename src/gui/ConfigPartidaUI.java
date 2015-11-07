@@ -31,30 +31,39 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
     private JButton btnJugar;
     private JButton btnVolver;
 
-    public ConfigPartidaUI() {
-        
+    //INSTANCIAR VENTANAS
+    private PrincipalUI pri;
+    private TableroUI tab;
+    private JugadorUI jug;
+
+    public ConfigPartidaUI(PrincipalUI pri) {
+        //Movimientos de ventanas
+
+        this.pri = pri;
+        this.tab = pri.getTab();
+        this.jug = pri.getJug();
+
         setLayout(null);
-        
+
         lLogo = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "LogoTablero.png")));
         lLogo.setBounds(0, 5, 600, 66);
         getContentPane().add(lLogo);
-        
-        lSelJugador=new JLabel("Seleccionar Jugador");
-        lSelJugador.setBounds(50,100, 500, 35);
+
+        lSelJugador = new JLabel("Seleccionar Jugador");
+        lSelJugador.setBounds(50, 100, 500, 35);
         lSelJugador.setFont(new Font("Arial", Font.BOLD, 20));
         add(lSelJugador);
-        
 
         selJugador = new JComboBox();
-        selJugador.setBounds(50, 140 , 500, 50);
+        selJugador.setBounds(50, 140, 500, 50);
         selJugador.setFont(new Font("Arial", Font.BOLD, 18));
         getContentPane().add(selJugador);
         selJugador.addItem("Cristian");
         selJugador.addItem("Laura");
         selJugador.addItem("Gustavo");
-        
-        btnAgregarJugador=new JButton("Agregar Jugador");
-        btnAgregarJugador.setBounds(410,195, 150, 35);
+
+        btnAgregarJugador = new JButton("Agregar Jugador");
+        btnAgregarJugador.setBounds(410, 195, 150, 35);
         btnAgregarJugador.setFont(new Font("Arial", Font.BOLD, 15));
         btnAgregarJugador.setBackground(new Color(238, 238, 238));
         btnAgregarJugador.setBorder(null);
@@ -62,18 +71,19 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         btnAgregarJugador.setFocusPainted(false);
         btnAgregarJugador.setBorderPainted(false);
         add(btnAgregarJugador);
+        btnAgregarJugador.addActionListener(this);
 
-        lSelDificultad=new JLabel("Seleccionar Dificultad");
-        lSelDificultad.setBounds(50,245, 500, 35);
+        lSelDificultad = new JLabel("Seleccionar Dificultad");
+        lSelDificultad.setBounds(50, 245, 500, 35);
         lSelDificultad.setFont(new Font("Arial", Font.BOLD, 20));
         selDificultad = new JComboBox();
         selDificultad.addItem("Facil");
         selDificultad.addItem("Medio");
         selDificultad.addItem("Dificil");
         add(lSelDificultad);
-        
+
         selDificultad = new JComboBox();
-        selDificultad.setBounds(50, 285 ,500, 50);
+        selDificultad.setBounds(50, 285, 500, 50);
         getContentPane().add(selDificultad);
 
         btnJugar = new JButton("Jugar");
@@ -83,11 +93,11 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         btnJugar.addActionListener(this);
 
         btnVolver = new JButton("Volver");
-        btnVolver.setBounds(50 , 460, 500, 50);
+        btnVolver.setBounds(50, 460, 500, 50);
         getContentPane().add(btnVolver);
         btnVolver.setFont(new Font("Arial", Font.BOLD, 18));
         btnVolver.addActionListener(this);
-        
+
         setSize(600, 600);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -96,7 +106,17 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (ae.getSource() == btnAgregarJugador) {
+            System.out.println("JUg " + jug);
+            jug.setVisible(true);
+            setVisible(false);
+        } else if (ae.getSource() == btnJugar) {
+            tab.setVisible(true);
+            setVisible(false);
+        } else if (ae.getSource() == btnVolver) {
+            pri.setVisible(true);
+            setVisible(false);
+        }
     }
 
 }

@@ -41,6 +41,9 @@ public class TableroUI extends JFrame implements ActionListener {
     private boolean tapar;
     private int parejasEncontradas;
     
+    //INSTANCIAS VENTANAS
+    
+    
     public TableroUI(String dificultad) {
         tablero = new Tablero();
         this.dificultad = dificultad;
@@ -156,9 +159,9 @@ public class TableroUI extends JFrame implements ActionListener {
                             
                             if (pareja) {
                                 btnJugadas[posPrimeraJugada[0]][posPrimeraJugada[1]].setEnabled(false);
-                                btnJugadas[posPrimeraJugada[0]][posPrimeraJugada[1]].setOpaque(true);
+                                btnJugadas[posPrimeraJugada[0]][posPrimeraJugada[1]].setOpaque(false);
                                 btnJugadas[posSegundaJugada[0]][posSegundaJugada[1]].setEnabled(false);
-                                btnJugadas[posSegundaJugada[0]][posSegundaJugada[1]].setOpaque(true);
+                                btnJugadas[posSegundaJugada[0]][posSegundaJugada[1]].setOpaque(false);
                                 
                                 ++parejasEncontradas;
                                 
