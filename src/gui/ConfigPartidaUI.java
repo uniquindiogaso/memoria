@@ -5,6 +5,7 @@
  */
 package gui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,62 +21,77 @@ import javax.swing.JLabel;
  */
 public class ConfigPartidaUI extends JFrame implements ActionListener {
 
+    private JComboBox selJugador;
+    private JComboBox selDificultad;
+    private static final String IMAGENES = "../media/imagenes/";
     private JLabel lLogo;
-    private JLabel lJugador;
-    private JLabel lNivel;
-    private JComboBox cbJugador;
-    private JComboBox cbNivel;
+    private JLabel lSelJugador;
+    private JLabel lSelDificultad;
+    private JButton btnAgregarJugador;
     private JButton btnJugar;
     private JButton btnVolver;
 
-    private static final String IMAGENES = "../media/imagenes/";
-
     public ConfigPartidaUI() {
+        
         setLayout(null);
-        setSize(600, 725);
-        setLocationRelativeTo(null);
-        inicializarComponetes();
-
-    }
-
-    public void inicializarComponetes() {
-        setLayout(null);
-        setSize(600, 600);
-        setLocationRelativeTo(null);
-
+        
         lLogo = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "LogoTablero.png")));
         lLogo.setBounds(0, 5, 600, 66);
-        add(lLogo);
+        getContentPane().add(lLogo);
+        
+        lSelJugador=new JLabel("Seleccionar Jugador");
+        lSelJugador.setBounds(50,100, 500, 35);
+        lSelJugador.setFont(new Font("Arial", Font.BOLD, 20));
+        add(lSelJugador);
+        
 
-        lJugador = new JLabel("Jugador:");
-        lJugador.setBounds(50, 150, 250, 30);
-        add(lJugador);
-        lJugador.setFont(new Font("Arial", Font.BOLD, 25));
+        selJugador = new JComboBox();
+        selJugador.setBounds(50, 140 , 500, 50);
+        selJugador.setFont(new Font("Arial", Font.BOLD, 18));
+        getContentPane().add(selJugador);
+        selJugador.addItem("Cristian");
+        selJugador.addItem("Laura");
+        selJugador.addItem("Gustavo");
         
-        lNivel = new JLabel("Nivel:");
-        lNivel.setBounds(50, 300, 250, 30);
-        add(lNivel);
-        lNivel.setFont(new Font("Arial", Font.BOLD, 25));
+        btnAgregarJugador=new JButton("Agregar Jugador");
+        btnAgregarJugador.setBounds(410,195, 150, 35);
+        btnAgregarJugador.setFont(new Font("Arial", Font.BOLD, 15));
+        btnAgregarJugador.setBackground(new Color(238, 238, 238));
+        btnAgregarJugador.setBorder(null);
+        //Evitar que al ser clikeado quede enmarcado
+        btnAgregarJugador.setFocusPainted(false);
+        btnAgregarJugador.setBorderPainted(false);
+        add(btnAgregarJugador);
 
-        cbJugador = new JComboBox();
-        cbJugador.setBounds(50, 200, 350, 50);
-        add(cbJugador);
+        lSelDificultad=new JLabel("Seleccionar Dificultad");
+        lSelDificultad.setBounds(50,245, 500, 35);
+        lSelDificultad.setFont(new Font("Arial", Font.BOLD, 20));
+        selDificultad = new JComboBox();
+        selDificultad.addItem("Facil");
+        selDificultad.addItem("Medio");
+        selDificultad.addItem("Dificil");
+        add(lSelDificultad);
         
-        cbNivel = new JComboBox();
-       cbNivel.setBounds(50, 350, 350, 50);
-        add(cbNivel);
-        
-        btnJugar = new JButton(new ImageIcon(this.getClass().getResource(IMAGENES + "play.png")));
-        btnJugar.setBounds(60, 450, 220, 48);
-        add(btnJugar);
+        selDificultad = new JComboBox();
+        selDificultad.setBounds(50, 285 ,500, 50);
+        getContentPane().add(selDificultad);
+
+        btnJugar = new JButton("Jugar");
+        btnJugar.setBounds(50, 390, 500, 50);
+        getContentPane().add(btnJugar);
         btnJugar.setFont(new Font("Arial", Font.BOLD, 18));
         btnJugar.addActionListener(this);
-    
 
-        btnVolver = new JButton(new ImageIcon(this.getClass().getResource(IMAGENES + "return.png")));
-        btnVolver.setBounds(310, 450, 220, 48);
-        add(btnVolver);
+        btnVolver = new JButton("Volver");
+        btnVolver.setBounds(50 , 460, 500, 50);
+        getContentPane().add(btnVolver);
         btnVolver.setFont(new Font("Arial", Font.BOLD, 18));
+        btnVolver.addActionListener(this);
+        
+        setSize(600, 600);
+        setLocationRelativeTo(null);
+        setResizable(false);
+
     }
 
     @Override
