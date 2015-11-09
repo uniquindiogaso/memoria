@@ -40,8 +40,7 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         //Movimientos de ventanas
 
         this.pri = pri;
-        this.tab = pri.getTab();
-        this.jug = pri.getJug();
+              this.jug = pri.getJug();
 
         setLayout(null);
 
@@ -57,7 +56,7 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         selJugador = new JComboBox();
         selJugador.setBounds(50, 140, 500, 50);
         selJugador.setFont(new Font("Arial", Font.BOLD, 18));
-        getContentPane().add(selJugador);
+        add(selJugador);
         selJugador.addItem("Cristian");
         selJugador.addItem("Laura");
         selJugador.addItem("Gustavo");
@@ -76,25 +75,25 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         lSelDificultad = new JLabel("Seleccionar Dificultad");
         lSelDificultad.setBounds(50, 245, 500, 35);
         lSelDificultad.setFont(new Font("Arial", Font.BOLD, 20));
+
         selDificultad = new JComboBox();
+        selDificultad.setFont(new Font("Arial", Font.BOLD, 18));
         selDificultad.addItem("Facil");
         selDificultad.addItem("Medio");
         selDificultad.addItem("Dificil");
         add(lSelDificultad);
-
-        selDificultad = new JComboBox();
         selDificultad.setBounds(50, 285, 500, 50);
         getContentPane().add(selDificultad);
 
         btnJugar = new JButton("Jugar");
         btnJugar.setBounds(50, 390, 500, 50);
-        getContentPane().add(btnJugar);
+        add(btnJugar);
         btnJugar.setFont(new Font("Arial", Font.BOLD, 18));
         btnJugar.addActionListener(this);
 
         btnVolver = new JButton("Volver");
         btnVolver.setBounds(50, 460, 500, 50);
-        getContentPane().add(btnVolver);
+        add(btnVolver);
         btnVolver.setFont(new Font("Arial", Font.BOLD, 18));
         btnVolver.addActionListener(this);
 
@@ -111,6 +110,7 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
             jug.setVisible(true);
             setVisible(false);
         } else if (ae.getSource() == btnJugar) {
+            tab=new TableroUI(selDificultad.getSelectedItem().toString());
             tab.setVisible(true);
             setVisible(false);
         } else if (ae.getSource() == btnVolver) {

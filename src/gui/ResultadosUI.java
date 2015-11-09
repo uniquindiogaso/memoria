@@ -26,10 +26,14 @@ public class ResultadosUI extends JFrame implements ActionListener {
     private JButton btnJugar;
     private JLabel lResultados;
     private JList lstResultados;
+    private PrincipalUI pri;
+    private ConfigPartidaUI conf;
 
     private static final String IMAGENES = "../media/imagenes/";
 
-    public ResultadosUI() {
+    public ResultadosUI(PrincipalUI pri) {
+        this.pri = pri;
+        this.conf = pri.getConfP();
 
         setTitle("Resultados");
         setLayout(null);
@@ -55,17 +59,25 @@ public class ResultadosUI extends JFrame implements ActionListener {
         btnJugar.setBounds(60, 520, 220, 50);
         add(btnJugar);
         btnJugar.setFont(new Font("Arial", Font.BOLD, 18));
+        btnJugar.addActionListener(this);
 
         btnVolver = new JButton(new ImageIcon(this.getClass().getResource(IMAGENES + "return.png")));
         btnVolver.setText("Volver");
         btnVolver.setBounds(310, 520, 220, 50);
         add(btnVolver);
         btnVolver.setFont(new Font("Arial", Font.BOLD, 18));
+        btnVolver.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-
+        if (ae.getSource() == btnJugar) {
+            conf.setVisible(true);
+            setVisible(false);
+        } else if (ae.getSource() == btnVolver) {
+            pri.setVisible(true);
+            setVisible(false);
+        }
     }
 
 }
