@@ -45,40 +45,40 @@ public class PrincipalUI extends JFrame implements ActionListener {
         this.res = new ResultadosUI();
         this.tab = new TableroUI("FACIL");
         this.confP = new ConfigPartidaUI(this);
-        getContentPane().setLayout(null);
+        setLayout(null);
 
         tablero = new Tablero();
         lLogo = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "LogoTablero.png")));
         lLogo.setBounds(0, 5, 600, 66);
-        getContentPane().add(lLogo);
+        add(lLogo);
 
         btnJugar = new JButton("Jugar");
         btnJugar.setBounds(175, 120, 250, 50);
-        getContentPane().add(btnJugar);
         btnJugar.setFont(new Font("Arial", Font.BOLD, 18));
         btnJugar.addActionListener(this);
-
+        add(btnJugar);
+        
         btnRegistrar = new JButton("Agregar Jugador");
         btnRegistrar.setBounds(175, 200, 250, 50);
-        getContentPane().add(btnRegistrar);
+        add(btnRegistrar);
         btnRegistrar.setFont(new Font("Arial", Font.BOLD, 18));
         btnRegistrar.addActionListener(this);
 
         btnResultados = new JButton("Resultados");
         btnResultados.setBounds(175, 280, 250, 50);
-        getContentPane().add(btnResultados);
+        add(btnResultados);
         btnResultados.setFont(new Font("Arial", Font.BOLD, 18));
         btnResultados.addActionListener(this);
 
         btnCreditos = new JButton("Creditos");
         btnCreditos.setBounds(175, 360, 250, 50);
-        getContentPane().add(btnCreditos);
+        add(btnCreditos);
         btnCreditos.setFont(new Font("Arial", Font.BOLD, 18));
         btnCreditos.addActionListener(this);
 
         btnSalir = new JButton("Salir");
         btnSalir.setBounds(175, 440, 250, 50);
-        getContentPane().add(btnSalir);
+        add(btnSalir);
         btnSalir.setFont(new Font("Arial", Font.BOLD, 18));
         btnSalir.addActionListener(this);
 
@@ -139,7 +139,5 @@ public class PrincipalUI extends JFrame implements ActionListener {
     public void setTab(TableroUI tab) {
         this.tab = tab;
     }
-    
-    
 
 }

@@ -5,6 +5,7 @@
  */
 package gui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JTextField;
 
 /**
@@ -22,22 +24,23 @@ public class JugadorUI extends JFrame implements ActionListener {
 
     private JButton btnVolver;
     private JButton btnAgregar;
-
     private JLabel lNombre;
     private JLabel lCodigo;
     private JLabel lLogo;
-
     private JTextField cmpCodigo;
     private JTextField cmpNombre;
-
+    private JLabel lJugadores;
+    private JList lstJugadores;
     private static final String IMAGENES = "../media/imagenes/";
 
     public JugadorUI() {
-
-        setTitle("Agregar Jugador");
+        
         setLayout(null);
-        setLocationRelativeTo(null);
+        setTitle("Agregar Jugador");
         setSize(600, 700);
+        setLocationRelativeTo(null);
+        setResizable(false);
+
         lLogo = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "LogoTablero.png")));
         lLogo.setBounds(0, 5, 600, 60);
         add(lLogo);
@@ -51,10 +54,25 @@ public class JugadorUI extends JFrame implements ActionListener {
         lNombre.setBounds(50, 170, 120, 35);
         lNombre.setFont(new Font("Arial", Font.BOLD, 28));
         add(lNombre);
-        
-        cmpCodigo=new JTextField();
-        //cmpCodigo.setBounds(150,);
-        
+
+        cmpCodigo = new JTextField();
+        cmpCodigo.setBounds(190, 100, 280, 35);
+        add(cmpCodigo);
+
+        cmpNombre = new JTextField();
+        cmpNombre.setBounds(190, 170, 280, 35);
+        add(cmpNombre);
+
+        lJugadores = new JLabel("Jugadores Registrados");
+        lJugadores.setBounds(50, 245, 300, 35);
+        lJugadores.setFont(new Font("Arial", Font.BOLD, 20));
+        add(lJugadores);
+
+        lstJugadores = new JList();
+        lstJugadores.setBounds(50, 280, 500, 300);
+        lstJugadores.setBackground(Color.darkGray);
+        add(lstJugadores
+        );
 
         btnAgregar = new JButton("Agregar");
         btnAgregar.setBounds(60, 600, 220, 50);
