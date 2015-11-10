@@ -15,6 +15,10 @@ public class Principal {
 
     private ArrayList<Jugador> jugadores;
 
+    public Principal() {
+        jugadores = new ArrayList<>();
+    }
+
     public Principal(ArrayList<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
@@ -52,7 +56,14 @@ public class Principal {
             jugadores.get(p).setnJugadas(jugadas);
         }
     }
-    
-    
+
+    public String[][] listarJugadores(int cantFilas, int cantCol) {
+        String[][] listado = new String[cantFilas][cantCol];
+        for (int i = 0; i < 10; i++) {
+
+        }
+
+        return listado;
+    }
 
 }
