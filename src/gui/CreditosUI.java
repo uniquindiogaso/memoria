@@ -27,16 +27,17 @@ public class CreditosUI extends JFrame implements ActionListener {
     public CreditosUI() {
 
         setTitle("Créditos");
-
         setLayout(null);
         setSize(600, 600);
+        setLocationRelativeTo(null);
+        
         lLogo = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "LogoTablero.png")));
         lLogo.setBounds(0, 5, 600, 60);
         add(lLogo);
 
         btnVolver = new JButton(new ImageIcon(this.getClass().getResource(IMAGENES + "return.png")));
-        btnVolver.setText("Volver");
-        btnVolver.setBounds(310, 500, 220, 48);
+        btnVolver.setText("Menu Principal");
+        btnVolver.setBounds(175, 500, 250, 50);
         add(btnVolver);
         btnVolver.setFont(new Font("Arial", Font.BOLD, 18));
     }

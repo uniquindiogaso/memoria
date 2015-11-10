@@ -2,7 +2,9 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/LAURA/Documents/UNIVERSIDAD/II%20SEMESTRE/FUNDAMENTOS%20DE%20ALGORITMIA/memoria/src/gui/TableroUI.java</file>
             <file>file:/C:/Users/LAURA/Documents/UNIVERSIDAD/II%20SEMESTRE/FUNDAMENTOS%20DE%20ALGORITMIA/memoria/src/gui/ConfigPartidaUI.java</file>
             <file>file:/C:/Users/LAURA/Documents/UNIVERSIDAD/II%20SEMESTRE/FUNDAMENTOS%20DE%20ALGORITMIA/memoria/src/gui/CreditosUI.java</file>
@@ -10,6 +12,15 @@
             <file>file:/C:/Users/LAURA/Documents/UNIVERSIDAD/II%20SEMESTRE/FUNDAMENTOS%20DE%20ALGORITMIA/memoria/src/memoria/Memoria.java</file>
             <file>file:/C:/Users/LAURA/Documents/UNIVERSIDAD/II%20SEMESTRE/FUNDAMENTOS%20DE%20ALGORITMIA/memoria/src/gui/JugadorUI.java</file>
             <file>file:/C:/Users/LAURA/Documents/UNIVERSIDAD/II%20SEMESTRE/FUNDAMENTOS%20DE%20ALGORITMIA/memoria/src/gui/ResultadosUI.java</file>
+=======
+            <file>file:/D:/Desarrollo/UQ/memoria/src/gui/TableroUI.java</file>
+            <file>file:/D:/Desarrollo/UQ/memoria/src/logica/Tablero.java</file>
+            <file>file:/D:/Desarrollo/UQ/memoria/src/memoria/Memoria.java</file>
+            <file>file:/D:/Desarrollo/UQ/memoria/src/gui/PrincipalUI.java</file>
+>>>>>>> a03c02db85d314f77086a6f3dab8945c97f2c60d
         </group>
+=======
+        <group/>
+>>>>>>> 269650d925cc8df9283852e0a9bca534f3810967
     </open-files>
 </project-private>
