@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import logica.Principal;
 import logica.Tablero;
 
 /**
@@ -35,15 +36,21 @@ public class PrincipalUI extends JFrame implements ActionListener {
     private CreditosUI cre;
     private JugadorUI jug;
     private ResultadosUI res;
-//    private TableroUI tab;
+// private TableroUI tab;
+
+    private Principal prinLog;
+
 
     public PrincipalUI() {
-        //MOvimiento entre ventanas
 
+        prinLog = new Principal();
+        
+
+        //MOvimiento entre ventanas
         this.cre = new CreditosUI();
-        this.jug = new JugadorUI();
+        this.jug = new JugadorUI(this);
 //        this.tab = new TableroUI("FACIL");
-        this.confP = new ConfigPartidaUI(this);
+        //this.confP = new ConfigPartidaUI(this);
         this.res = new ResultadosUI(this);
 
         setLayout(null);
@@ -92,6 +99,7 @@ public class PrincipalUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnJugar) {
+            confP = new ConfigPartidaUI(this);
             confP.setVisible(true);
             setVisible(false);
         } else if (ae.getSource() == btnRegistrar) {
@@ -134,13 +142,21 @@ public class PrincipalUI extends JFrame implements ActionListener {
         this.res = res;
     }
 
-   
     public ConfigPartidaUI getConfP() {
         return confP;
     }
 
     public void setConfP(ConfigPartidaUI confP) {
         this.confP = confP;
+    }
+    
+    
+    public Principal getPrinLog() {
+        return prinLog;
+    }
+
+    public void setPrinLog(Principal prinLog) {
+        this.prinLog = prinLog;
     }
 
 }

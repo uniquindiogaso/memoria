@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
+import logica.Principal;
 
 /**
  *
@@ -33,8 +34,12 @@ public class JugadorUI extends JFrame implements ActionListener {
     private JList lstJugadores;
     private static final String IMAGENES = "../media/imagenes/";
 
-    public JugadorUI() {
-        
+    private PrincipalUI pri;
+
+    public JugadorUI(PrincipalUI pri) {
+
+        this.pri = pri;
+
         setLayout(null);
         setTitle("Agregar Jugador");
         setSize(600, 700);
@@ -78,16 +83,26 @@ public class JugadorUI extends JFrame implements ActionListener {
         btnAgregar.setBounds(60, 600, 220, 50);
         add(btnAgregar);
         btnAgregar.setFont(new Font("Arial", Font.BOLD, 18));
+        btnAgregar.addActionListener(this);
 
         btnVolver = new JButton(new ImageIcon(this.getClass().getResource(IMAGENES + "return.png")));
         btnVolver.setText("Volver");
         btnVolver.setBounds(310, 600, 220, 50);
         add(btnVolver);
         btnVolver.setFont(new Font("Arial", Font.BOLD, 18));
+        btnVolver.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == btnAgregar) {
+            pri.getPrinLog().agregarJugador(cmpNombre.getText(), Integer.valueOf(cmpCodigo.getText()));
+            System.out.println("Jugador:" + pri.getPrinLog().getJugadores().size());
+        } else {
+            pri.setVisible(true);
+            setVisible(false);
+
+        }
 
     }
 
