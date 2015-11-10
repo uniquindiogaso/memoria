@@ -9,11 +9,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import logica.Jugador;
+import logica.Principal;
 
 /**
  *
@@ -33,15 +36,20 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
 
     //INSTANCIAR VENTANAS
     private PrincipalUI pri;
+    private Principal prinLog;
     private TableroUI tab;
     private JugadorUI jug;
+
+    // Listado de jugadores
+    private ArrayList<Jugador> jugadores;
 
     public ConfigPartidaUI(PrincipalUI pri) {
         //Movimientos de ventanas
 
         this.pri = pri;
-              this.jug = pri.getJug();
-
+        //this.jugadores = jugadores;
+        System.out.println("cualquier cosa");
+        System.out.println("Jugador:" + pri.getPrinLog().getJugadores().size());
         setLayout(null);
 
         lLogo = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "LogoTablero.png")));
@@ -110,7 +118,7 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
             jug.setVisible(true);
             setVisible(false);
         } else if (ae.getSource() == btnJugar) {
-            tab=new TableroUI(selDificultad.getSelectedItem().toString());
+            tab = new TableroUI(selDificultad.getSelectedItem().toString());
             tab.setVisible(true);
             setVisible(false);
         } else if (ae.getSource() == btnVolver) {
