@@ -65,9 +65,11 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         selJugador.setBounds(50, 140, 500, 50);
         selJugador.setFont(new Font("Arial", Font.BOLD, 18));
         add(selJugador);
-        selJugador.addItem("Cristian");
-        selJugador.addItem("Laura");
-        selJugador.addItem("Gustavo");
+        
+        for (Jugador j:pri.getPrinLog().getJugadores()) {
+            selJugador.addItem(j);
+        }
+        
 
         btnAgregarJugador = new JButton("Agregar Jugador");
         btnAgregarJugador.setBounds(410, 195, 150, 35);
@@ -118,6 +120,7 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
             jug.setVisible(true);
             setVisible(false);
         } else if (ae.getSource() == btnJugar) {
+            System.out.println(pri.getPrinLog().getJugadores().get(selJugador.getSelectedIndex()).getId());
             tab = new TableroUI(selDificultad.getSelectedItem().toString());
             tab.setVisible(true);
             setVisible(false);

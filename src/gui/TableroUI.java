@@ -32,6 +32,9 @@ public class TableroUI extends JFrame implements ActionListener {
     private boolean tapar;
     private int parejasEncontradas;
 
+    
+    //principal Id usuario
+    
     //INSTANCIAS VENTANAS
     public TableroUI(String dificultad) {
         tablero = new Tablero();
