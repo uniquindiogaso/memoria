@@ -5,23 +5,23 @@
  */
 package logica;
 
-import java.util.ArrayList;
-
-
 public class Jugador {
-    
+
     private int id;
     private String nombre;
-    private ArrayList<Partida> puntajes;
-
-    public Jugador() {
-        puntajes = new ArrayList<>();
-    }
+    private int nJugadas;
+    private int tiempo;
 
     public Jugador(int id, String nombre) {
-        super();
         this.id = id;
         this.nombre = nombre;
+    }
+
+    public Jugador(int id, String nombre, int nJugadas, int tiempo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.nJugadas = nJugadas;
+        this.tiempo = tiempo;
     }
 
     public int getId() {
@@ -39,7 +39,21 @@ public class Jugador {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
-    
+
+    public int getnJugadas() {
+        return nJugadas;
+    }
+
+    public void setnJugadas(int nJugadas) {
+        this.nJugadas = nJugadas;
+    }
+
+    public int getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(int tiempo) {
+        this.tiempo = tiempo;
+    }
+
 }
