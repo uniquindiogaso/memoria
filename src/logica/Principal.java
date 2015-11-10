@@ -57,12 +57,13 @@ public class Principal {
         }
     }
 
-    public String[][] listarJugadores(int cantFilas, int cantCol) {
-        String[][] listado = new String[cantFilas][cantCol];
-        for (int i = 0; i < 10; i++) {
-
+    public String[][] listarJugadores() {
+        String[][] listado = new String[jugadores.size()][3];
+        for (int i = 0; i < listado.length; i++) {
+            listado[i][0] = jugadores.get(i).getNombre();
+            listado[i][1] = String.valueOf(jugadores.get(i).getnJugadas());
+            listado[i][2] = String.valueOf(jugadores.get(i).getTiempo());
         }
-
         return listado;
     }
 
