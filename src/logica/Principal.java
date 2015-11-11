@@ -47,13 +47,16 @@ public class Principal {
         return false;
     }
 
-    public void actualizarPuntajes(int jugadas, int tiempo, int id) {
-        int p = buscarJugador(id);
-        int j = jugadores.get(p).getnJugadas();
-        int t = jugadores.get(p).getTiempo();
-        if (jugadas < j && tiempo < t) {
-            jugadores.get(p).setTiempo(tiempo);
-            jugadores.get(p).setnJugadas(jugadas);
+    public void actualizarPuntajes(int id, int tiempo, int jugadas) {
+        int pos = buscarJugador(id);
+        int j = jugadores.get(pos).getnJugadas();
+        int t = jugadores.get(pos).getTiempo();
+        if (j == 0 || t == 0) {
+            jugadores.get(pos).setTiempo(tiempo);
+            jugadores.get(pos).setnJugadas(jugadas);
+        } else if (jugadas < j && tiempo < t) {
+            jugadores.get(pos).setTiempo(tiempo);
+            jugadores.get(pos).setnJugadas(jugadas);
         }
     }
 
