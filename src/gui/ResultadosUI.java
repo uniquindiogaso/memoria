@@ -6,6 +6,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +15,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -25,7 +29,7 @@ public class ResultadosUI extends JFrame implements ActionListener {
     private JLabel lLogo;
     private JButton btnJugar;
     private JLabel lResultados;
-    private JList lstResultados;
+    private JTable lstResultados;
     private PrincipalUI pri;
     private ConfigPartidaUI conf;
 
@@ -50,10 +54,7 @@ public class ResultadosUI extends JFrame implements ActionListener {
         lResultados.setFont(new Font("Arial", Font.BOLD, 28));
         add(lResultados);
 
-        lstResultados = new JList();
-        lstResultados.setBounds(75, 150, 450, 350);
-        lstResultados.setBackground(Color.darkGray);
-        add(lstResultados);
+        actualizarTabla();
 
         btnJugar = new JButton("Jugar de nuevo");
         btnJugar.setBounds(60, 520, 220, 50);
@@ -72,12 +73,35 @@ public class ResultadosUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnJugar) {
+            //Si aun no ha instanciado la ventana de Configaracion
+            //generar nueva instancia
+            if (conf == null) {
+                conf = new ConfigPartidaUI(pri);
+            }
             conf.setVisible(true);
             setVisible(false);
         } else if (ae.getSource() == btnVolver) {
             pri.setVisible(true);
             setVisible(false);
         }
+    }
+
+    public void actualizarTabla() {
+        String datosJugadores[][] = pri.getPrinLog().listarJugadores();
+        lstResultados = new JTable(datosJugadores, new String[]{"Usuario", "Jugadas", "Tiempo"});
+        lstResultados.setFont(new Font("Arial", Font.BOLD, 18));
+        lstResultados.setRowHeight(20);
+
+        //Cambiar Estilo a Encabezado
+        JTableHeader encabezado = lstResultados.getTableHeader();
+        encabezado.setPreferredSize(new Dimension(500, 32));
+        encabezado.setFont(new Font("Arial", Font.BOLD, 24));
+        //No permitir el desplazamiento del encabezado
+        encabezado.setReorderingAllowed(false);
+
+        JScrollPane scrollTabla = new JScrollPane(lstResultados);
+        scrollTabla.setBounds(75, 150, 450, 350);
+        add(scrollTabla);
     }
 
 }

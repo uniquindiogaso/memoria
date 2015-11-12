@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -33,8 +34,8 @@ public class JugadorUI extends JFrame implements ActionListener {
     private JTextField cmpNombre;
     private JLabel lJugadores;
     private JTable lstJugadores;
+    private JScrollPane scrollTabla;
     private static final String IMAGENES = "../media/imagenes/";
-    private String[] TITULOS_TABLA = {"Usuario", "Jugadas", "Tiempo"};
 
     private PrincipalUI pri;
 
@@ -75,9 +76,7 @@ public class JugadorUI extends JFrame implements ActionListener {
         lJugadores.setFont(new Font("Arial", Font.BOLD, 20));
         add(lJugadores);
 
-        actualizarTabla();
-        
-
+        //actualizarTabla();
         btnAgregar = new JButton("Agregar");
         btnAgregar.setBounds(60, 600, 220, 50);
         add(btnAgregar);
@@ -90,17 +89,25 @@ public class JugadorUI extends JFrame implements ActionListener {
         add(btnVolver);
         btnVolver.setFont(new Font("Arial", Font.BOLD, 18));
         btnVolver.addActionListener(this);
+
+        cmpCodigo.setText(String.valueOf(pri.getPrinLog().getJugadores().size() + 1));
+        cmpCodigo.setEditable(false);
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnAgregar) {
-            if(pri.getPrinLog().agregarJugador(cmpNombre.getText(), Integer.valueOf(cmpCodigo.getText()))){
-                actualizarTabla();
-                cmpCodigo.setText("");
-                cmpNombre.setText("");
+
+            if (!cmpNombre.getText().isEmpty()) {
+                if (pri.getPrinLog().agregarJugador(cmpNombre.getText(), Integer.valueOf(cmpCodigo.getText()))) {
+                    actualizarTabla();
+                    cmpCodigo.setText(String.valueOf(pri.getPrinLog().getJugadores().size() + 1));
+                    cmpNombre.setText("");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Para registrar el jugador se debe de digitar nombre de usuario", "Información Incompleta", JOptionPane.ERROR_MESSAGE);
             }
-            
+
         } else {
             pri.setVisible(true);
             setVisible(false);
@@ -111,20 +118,22 @@ public class JugadorUI extends JFrame implements ActionListener {
 
     public void actualizarTabla() {
         String datosJugadores[][] = pri.getPrinLog().listarJugadores();
-        lstJugadores = new JTable(datosJugadores, TITULOS_TABLA);
+
+        lstJugadores = new JTable(datosJugadores, new String[]{"Usuario", "Jugadas", "Tiempo"});
         lstJugadores.setFont(new Font("Arial", Font.BOLD, 18));
         lstJugadores.setRowHeight(20);
-        
+
         //Cambiar Estilo a Encabezado
         JTableHeader encabezado = lstJugadores.getTableHeader();
         encabezado.setPreferredSize(new Dimension(500, 32));
         encabezado.setFont(new Font("Arial", Font.BOLD, 24));
         //No permitir el desplazamiento del encabezado
         encabezado.setReorderingAllowed(false);
-        
-        JScrollPane scrollTabla = new JScrollPane(lstJugadores);
+
+        scrollTabla = new JScrollPane(lstJugadores);
         scrollTabla.setBounds(50, 280, 500, 300);
-        add(scrollTabla);
+        getContentPane().add(scrollTabla);
+
     }
 
 }

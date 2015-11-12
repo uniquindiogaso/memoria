@@ -48,12 +48,13 @@ public class PrincipalUI extends JFrame implements ActionListener {
 
         //MOvimiento entre ventanas
         this.cre = new CreditosUI();
-        this.jug = new JugadorUI(this);
+        
 //        this.tab = new TableroUI("FACIL");
         //this.confP = new ConfigPartidaUI(this);
         this.res = new ResultadosUI(this);
 
         setLayout(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         tablero = new Tablero();
         lLogo = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "LogoTablero.png")));
@@ -103,7 +104,9 @@ public class PrincipalUI extends JFrame implements ActionListener {
             confP.setVisible(true);
             setVisible(false);
         } else if (ae.getSource() == btnRegistrar) {
+            this.jug = new JugadorUI(this);
             jug.setVisible(true);
+            jug.actualizarTabla();
             setVisible(false);
         } else if (ae.getSource() == btnResultados) {
             res.setVisible(true);

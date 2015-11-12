@@ -45,12 +45,9 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
 
     public ConfigPartidaUI(PrincipalUI pri) {
         //Movimientos de ventanas
-
         this.pri = pri;
-        //this.jugadores = jugadores;
-        System.out.println("cualquier cosa");
-        System.out.println("Jugador:" + pri.getPrinLog().getJugadores().size());
         setLayout(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         lLogo = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "LogoTablero.png")));
         lLogo.setBounds(0, 5, 600, 66);
@@ -66,9 +63,8 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         selJugador.setFont(new Font("Arial", Font.BOLD, 18));
         add(selJugador);
 
-        for (Jugador j : pri.getPrinLog().getJugadores()) {
-            selJugador.addItem(j);
-        }
+        actualizarListJugadores();
+        
 
         btnAgregarJugador = new JButton("Agregar Jugador");
         btnAgregarJugador.setBounds(410, 195, 150, 35);
@@ -115,20 +111,23 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnAgregarJugador) {
-            System.out.println("Jug " + jug);
-            jug = pri.getJug();
+            jug = new JugadorUI(pri);
             jug.setVisible(true);
+            jug.actualizarTabla();
             setVisible(false);
         } else if (ae.getSource() == btnJugar) {
-            System.out.println(pri.getPrinLog().getJugadores().get(selJugador.getSelectedIndex()).getId());
             tab = new TableroUI(pri, pri.getPrinLog().getJugadores().get(selJugador.getSelectedIndex()).getId(), selDificultad.getSelectedItem().toString());
-
-            System.out.println("Tiempo  " + pri.getPrinLog().getJugadores().get(0).getTiempo());
             tab.setVisible(true);
             setVisible(false);
         } else if (ae.getSource() == btnVolver) {
             pri.setVisible(true);
             setVisible(false);
+        }
+    }
+
+    public void actualizarListJugadores() {
+        for (Jugador j : pri.getPrinLog().getJugadores()) {
+            selJugador.addItem(j);
         }
     }
 
