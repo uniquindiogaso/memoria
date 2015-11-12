@@ -65,9 +65,10 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         selJugador.setBounds(50, 140, 500, 50);
         selJugador.setFont(new Font("Arial", Font.BOLD, 18));
         add(selJugador);
-        selJugador.addItem("Cristian");
-        selJugador.addItem("Laura");
-        selJugador.addItem("Gustavo");
+
+        for (Jugador j : pri.getPrinLog().getJugadores()) {
+            selJugador.addItem(j);
+        }
 
         btnAgregarJugador = new JButton("Agregar Jugador");
         btnAgregarJugador.setBounds(410, 195, 150, 35);
@@ -114,11 +115,15 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnAgregarJugador) {
-            System.out.println("JUg " + jug);
+            System.out.println("Jug " + jug);
+
             jug.setVisible(true);
             setVisible(false);
         } else if (ae.getSource() == btnJugar) {
-            tab = new TableroUI(selDificultad.getSelectedItem().toString());
+            System.out.println(pri.getPrinLog().getJugadores().get(selJugador.getSelectedIndex()).getId());
+            tab = new TableroUI(pri, pri.getPrinLog().getJugadores().get(selJugador.getSelectedIndex()).getId(), selDificultad.getSelectedItem().toString());
+
+            System.out.println("Tiempo  " + pri.getPrinLog().getJugadores().get(0).getTiempo());
             tab.setVisible(true);
             setVisible(false);
         } else if (ae.getSource() == btnVolver) {

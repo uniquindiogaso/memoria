@@ -56,4 +56,9 @@ public class Jugador {
         this.tiempo = tiempo;
     }
 
+    @Override
+    public String toString() {
+        return id + " - " + nombre;
+    }
+
 }
