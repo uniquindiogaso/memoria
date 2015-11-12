@@ -5,7 +5,7 @@
  */
 package gui;
 
-import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,9 +13,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
-import logica.Principal;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -31,8 +32,9 @@ public class JugadorUI extends JFrame implements ActionListener {
     private JTextField cmpCodigo;
     private JTextField cmpNombre;
     private JLabel lJugadores;
-    private JList lstJugadores;
+    private JTable lstJugadores;
     private static final String IMAGENES = "../media/imagenes/";
+    private String[] TITULOS_TABLA = {"Usuario", "Jugadas", "Tiempo"};
 
     private PrincipalUI pri;
 
@@ -73,11 +75,8 @@ public class JugadorUI extends JFrame implements ActionListener {
         lJugadores.setFont(new Font("Arial", Font.BOLD, 20));
         add(lJugadores);
 
-        lstJugadores = new JList();
-        lstJugadores.setBounds(50, 280, 500, 300);
-        lstJugadores.setBackground(Color.darkGray);
-        add(lstJugadores
-        );
+        actualizarTabla();
+        
 
         btnAgregar = new JButton("Agregar");
         btnAgregar.setBounds(60, 600, 220, 50);
@@ -96,14 +95,36 @@ public class JugadorUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnAgregar) {
-            pri.getPrinLog().agregarJugador(cmpNombre.getText(), Integer.valueOf(cmpCodigo.getText()));
-            System.out.println("Jugador:" + pri.getPrinLog().getJugadores().size());
+            if(pri.getPrinLog().agregarJugador(cmpNombre.getText(), Integer.valueOf(cmpCodigo.getText()))){
+                actualizarTabla();
+                cmpCodigo.setText("");
+                cmpNombre.setText("");
+            }
+            
         } else {
             pri.setVisible(true);
             setVisible(false);
 
         }
 
+    }
+
+    public void actualizarTabla() {
+        String datosJugadores[][] = pri.getPrinLog().listarJugadores();
+        lstJugadores = new JTable(datosJugadores, TITULOS_TABLA);
+        lstJugadores.setFont(new Font("Arial", Font.BOLD, 18));
+        lstJugadores.setRowHeight(20);
+        
+        //Cambiar Estilo a Encabezado
+        JTableHeader encabezado = lstJugadores.getTableHeader();
+        encabezado.setPreferredSize(new Dimension(500, 32));
+        encabezado.setFont(new Font("Arial", Font.BOLD, 24));
+        //No permitir el desplazamiento del encabezado
+        encabezado.setReorderingAllowed(false);
+        
+        JScrollPane scrollTabla = new JScrollPane(lstJugadores);
+        scrollTabla.setBounds(50, 280, 500, 300);
+        add(scrollTabla);
     }
 
 }

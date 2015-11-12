@@ -116,7 +116,7 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnAgregarJugador) {
             System.out.println("Jug " + jug);
-
+            jug = pri.getJug();
             jug.setVisible(true);
             setVisible(false);
         } else if (ae.getSource() == btnJugar) {
