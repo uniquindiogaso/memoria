@@ -3,11 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/Desarrollo/UQ/memoria/src/gui/TableroUI.java</file>
-            <file>file:/D:/Desarrollo/UQ/memoria/src/logica/Jugador.java</file>
-            <file>file:/D:/Desarrollo/UQ/memoria/src/logica/Principal.java</file>
-=======
+            <file>file:/C:/Users/LAURA/Documents/UNIVERSIDAD/II%20SEMESTRE/FUNDAMENTOS%20DE%20ALGORITMIA/memoria/Test/Prueba.java</file>
             <file>file:/C:/Users/LAURA/Documents/UNIVERSIDAD/II%20SEMESTRE/FUNDAMENTOS%20DE%20ALGORITMIA/memoria/src/gui/TableroUI.java</file>
             <file>file:/C:/Users/LAURA/Documents/UNIVERSIDAD/II%20SEMESTRE/FUNDAMENTOS%20DE%20ALGORITMIA/memoria/src/gui/ConfigPartidaUI.java</file>
             <file>file:/C:/Users/LAURA/Documents/UNIVERSIDAD/II%20SEMESTRE/FUNDAMENTOS%20DE%20ALGORITMIA/memoria/src/gui/CreditosUI.java</file>
@@ -16,8 +12,9 @@
             <file>file:/C:/Users/LAURA/Documents/UNIVERSIDAD/II%20SEMESTRE/FUNDAMENTOS%20DE%20ALGORITMIA/memoria/src/gui/PrincipalUI.java</file>
             <file>file:/C:/Users/LAURA/Documents/UNIVERSIDAD/II%20SEMESTRE/FUNDAMENTOS%20DE%20ALGORITMIA/memoria/src/gui/JugadorUI.java</file>
             <file>file:/C:/Users/LAURA/Documents/UNIVERSIDAD/II%20SEMESTRE/FUNDAMENTOS%20DE%20ALGORITMIA/memoria/src/gui/ResultadosUI.java</file>
+            <file>file:/C:/Users/LAURA/Documents/UNIVERSIDAD/II%20SEMESTRE/FUNDAMENTOS%20DE%20ALGORITMIA/memoria/Test/logica/Principal.java</file>
             <file>file:/C:/Users/LAURA/Documents/UNIVERSIDAD/II%20SEMESTRE/FUNDAMENTOS%20DE%20ALGORITMIA/memoria/src/logica/Jugador.java</file>
->>>>>>> 0ff1262dc6d77d378e5655b3db737c1c610bccd5
+            <file>file:/C:/Users/LAURA/Documents/UNIVERSIDAD/II%20SEMESTRE/FUNDAMENTOS%20DE%20ALGORITMIA/memoria/src/logica/Tablero.java</file>
         </group>
     </open-files>
 </project-private>
