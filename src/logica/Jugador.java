@@ -5,7 +5,9 @@
  */
 package logica;
 
-public class Jugador {
+import java.util.Comparator;
+
+public class Jugador implements Comparator<Jugador> {
 
     private int id;
     private String nombre;
@@ -59,6 +61,11 @@ public class Jugador {
     @Override
     public String toString() {
         return id + " - " + nombre;
+    }
+
+    @Override
+    public int compare(Jugador j1, Jugador j2) {
+        return new Integer(j1.getnJugadas()).compareTo(j2.getnJugadas());
     }
 
 }

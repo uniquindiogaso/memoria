@@ -47,11 +47,11 @@ public class PrincipalUI extends JFrame implements ActionListener {
         
 
         //MOvimiento entre ventanas
-        this.cre = new CreditosUI();
+        cre = new CreditosUI(this);
         
 //        this.tab = new TableroUI("FACIL");
         //this.confP = new ConfigPartidaUI(this);
-        this.res = new ResultadosUI(this);
+       
 
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,7 +79,7 @@ public class PrincipalUI extends JFrame implements ActionListener {
         btnResultados.setFont(new Font("Arial", Font.BOLD, 18));
         btnResultados.addActionListener(this);
 
-        btnCreditos = new JButton("Creditos");
+        btnCreditos = new JButton("Créditos");
         btnCreditos.setBounds(175, 360, 250, 50);
         add(btnCreditos);
         btnCreditos.setFont(new Font("Arial", Font.BOLD, 18));
@@ -109,8 +109,10 @@ public class PrincipalUI extends JFrame implements ActionListener {
             jug.actualizarTabla();
             setVisible(false);
         } else if (ae.getSource() == btnResultados) {
+            res = new ResultadosUI(this);
             res.setVisible(true);
             setVisible(false);
+            
         } else if (ae.getSource() == btnCreditos) {
             cre.setVisible(true);
             setVisible(false);

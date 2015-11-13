@@ -6,6 +6,8 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 public class Principal {
 
     private ArrayList<Jugador> jugadores;
+    private Jugador jug;
 
     public Principal() {
         jugadores = new ArrayList<>();
@@ -70,4 +73,53 @@ public class Principal {
         return listado;
     }
 
+    public String[][] listarResultados() {
+
+        ArrayList<Jugador> jugCopia = jugadores;
+        
+        String[][] lisResultados = new String[jugCopia.size()][3];
+        for (int i = 0; i < lisResultados.length; i++) {
+            for (int j = i; j < lisResultados.length; j++) {
+                if (jugCopia.get(i).getnJugadas() != jugCopia.get(j).getnJugadas()) {
+                    if (jugCopia.get(i).getnJugadas() > jugCopia.get(j).getnJugadas()) {
+                        Jugador aux = jugCopia.get(i);
+                        jugCopia.set(i, jugCopia.get(j));
+                        jugCopia.set(j, aux);
+                        System.out.println("ORGANIZÓ POR JUGADAS");
+                        System.out.println("jugador 1" + jugCopia);
+                    }
+                }else{
+                    if (jugCopia.get(i).getTiempo()> jugCopia.get(j).getTiempo()) {
+                        Jugador aux = jugCopia.get(i);
+                        jugCopia.set(i, jugCopia.get(j));
+                        jugCopia.set(j, aux);
+                        System.out.println("ORGANIZÓ POR TIEMPO");
+                        System.out.println("jugador 1" + jugCopia);
+                    }
+                }
+            }
+
+        }
+        System.out.println("jugador 1" + jugCopia);
+        for (int i = 0; i < lisResultados.length; i++) {
+            lisResultados[i][0] = jugCopia.get(i).getNombre();
+            lisResultados[i][1] = String.valueOf(jugCopia.get(i).getnJugadas());
+            lisResultados[i][2] = String.valueOf(jugCopia.get(i).getTiempo());
+        }
+        return lisResultados;
+    }
+    /*ArrayList<Jugador> jugClone;
+     jugClone  = new ArrayList<>();*/
+
+    public String[][] listar() {
+
+        ArrayList<Jugador> jugClone = (ArrayList<Jugador>) jugadores.clone();
+
+        String[][] lis = new String[jugadores.size()][3];
+
+        //Collections.shuffle(jugClone);
+        /*Collections.sort(jugClone, new Comparator() {
+         });*/
+        return lis;
+    }
 }

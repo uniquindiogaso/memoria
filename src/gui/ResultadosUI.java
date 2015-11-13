@@ -32,6 +32,7 @@ public class ResultadosUI extends JFrame implements ActionListener {
     private JTable lstResultados;
     private PrincipalUI pri;
     private ConfigPartidaUI conf;
+    private JScrollPane scrollTabla;
 
     private static final String IMAGENES = "../media/imagenes/";
 
@@ -73,7 +74,7 @@ public class ResultadosUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnJugar) {
-            //Si aun no ha instanciado la ventana de Configaracion
+            //Si aun no ha instanciado la ventana de Configuración
             //generar nueva instancia
             if (conf == null) {
                 conf = new ConfigPartidaUI(pri);
@@ -87,7 +88,7 @@ public class ResultadosUI extends JFrame implements ActionListener {
     }
 
     public void actualizarTabla() {
-        String datosJugadores[][] = pri.getPrinLog().listarJugadores();
+        String datosJugadores[][] = pri.getPrinLog().listarResultados();
         lstResultados = new JTable(datosJugadores, new String[]{"Usuario", "Jugadas", "Tiempo"});
         lstResultados.setFont(new Font("Arial", Font.BOLD, 18));
         lstResultados.setRowHeight(20);
@@ -99,9 +100,9 @@ public class ResultadosUI extends JFrame implements ActionListener {
         //No permitir el desplazamiento del encabezado
         encabezado.setReorderingAllowed(false);
 
-        JScrollPane scrollTabla = new JScrollPane(lstResultados);
-        scrollTabla.setBounds(75, 150, 450, 350);
-        add(scrollTabla);
+        JScrollPane scrollResultados = new JScrollPane(lstResultados);
+        scrollResultados.setBounds(75, 150, 450, 350);
+        add(scrollResultados);
     }
 
 }
