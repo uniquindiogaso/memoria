@@ -139,6 +139,7 @@ public class TableroUI extends JFrame implements ActionListener {
             }
 
         } else if (ae.getSource() == btnResultados) {
+            res = new ResultadosUI(pri);
             res.setVisible(true);
             setVisible(false);
         } else {

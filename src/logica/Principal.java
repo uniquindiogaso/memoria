@@ -75,33 +75,36 @@ public class Principal {
 
     public String[][] listarResultados() {
 
-        //ArrayList<Jugador> jugadores = jugadores;
-        System.out.println("jugador 1" + jugadores);
-        String[][] lisResultados = new String[jugadores.size()][3];
+        ArrayList<Jugador> jugCopia = jugadores;
+        
+        String[][] lisResultados = new String[jugCopia.size()][3];
         for (int i = 0; i < lisResultados.length; i++) {
             for (int j = i; j < lisResultados.length; j++) {
-                if (jugadores.get(i).getnJugadas() != jugadores.get(j).getnJugadas()) {
-                    if (jugadores.get(i).getnJugadas() < jugadores.get(j).getnJugadas()) {
-                        Jugador aux = jugadores.get(i);
-                        jugadores.set(i, jugadores.get(j));
-                        jugadores.set(j, aux);
+                if (jugCopia.get(i).getnJugadas() != jugCopia.get(j).getnJugadas()) {
+                    if (jugCopia.get(i).getnJugadas() > jugCopia.get(j).getnJugadas()) {
+                        Jugador aux = jugCopia.get(i);
+                        jugCopia.set(i, jugCopia.get(j));
+                        jugCopia.set(j, aux);
                         System.out.println("ORGANIZÓ POR JUGADAS");
+                        System.out.println("jugador 1" + jugCopia);
                     }
                 }else{
-                    if (jugadores.get(i).getTiempo()< jugadores.get(j).getTiempo()) {
-                        Jugador aux = jugadores.get(i);
-                        jugadores.set(i, jugadores.get(j));
-                        jugadores.set(j, aux);
+                    if (jugCopia.get(i).getTiempo()> jugCopia.get(j).getTiempo()) {
+                        Jugador aux = jugCopia.get(i);
+                        jugCopia.set(i, jugCopia.get(j));
+                        jugCopia.set(j, aux);
                         System.out.println("ORGANIZÓ POR TIEMPO");
+                        System.out.println("jugador 1" + jugCopia);
                     }
                 }
             }
 
         }
+        System.out.println("jugador 1" + jugCopia);
         for (int i = 0; i < lisResultados.length; i++) {
-            lisResultados[i][0] = jugadores.get(i).getNombre();
-            lisResultados[i][1] = String.valueOf(jugadores.get(i).getnJugadas());
-            lisResultados[i][2] = String.valueOf(jugadores.get(i).getTiempo());
+            lisResultados[i][0] = jugCopia.get(i).getNombre();
+            lisResultados[i][1] = String.valueOf(jugCopia.get(i).getnJugadas());
+            lisResultados[i][2] = String.valueOf(jugCopia.get(i).getTiempo());
         }
         return lisResultados;
     }

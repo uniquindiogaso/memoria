@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import logica.Jugador;
 import logica.Principal;
 
@@ -64,7 +65,6 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         add(selJugador);
 
         actualizarListJugadores();
-        
 
         btnAgregarJugador = new JButton("Agregar Jugador");
         btnAgregarJugador.setBounds(410, 195, 150, 35);
@@ -116,9 +116,13 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
             jug.actualizarTabla();
             setVisible(false);
         } else if (ae.getSource() == btnJugar) {
-            tab = new TableroUI(pri, pri.getPrinLog().getJugadores().get(selJugador.getSelectedIndex()).getId(), selDificultad.getSelectedItem().toString());
-            tab.setVisible(true);
-            setVisible(false);
+            if (selJugador.getItemCount() > 0) {
+                tab = new TableroUI(pri, pri.getPrinLog().getJugadores().get(selJugador.getSelectedIndex()).getId(), selDificultad.getSelectedItem().toString());
+                tab.setVisible(true);
+                setVisible(false);
+            }else{
+                JOptionPane.showMessageDialog(null,"Debe crear un usuario para poder jugar.");
+            }
         } else if (ae.getSource() == btnVolver) {
             pri.setVisible(true);
             setVisible(false);
