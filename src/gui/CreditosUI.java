@@ -24,27 +24,27 @@ public class CreditosUI extends JFrame implements ActionListener {
     private JLabel lCreditos;
     private PrincipalUI pri;
 
-    private static final String IMAGENES = "../media/imagenes/";
-
     public CreditosUI(PrincipalUI pri) {
-
         this.pri = pri;
+        inicializarComponentes();
+    }
 
+    private void inicializarComponentes() {
         setTitle("Créditos");
         setLayout(null);
         setResizable(false);
         setSize(600, 600);
         setLocationRelativeTo(null);
 
-        lCreditos = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "creditos.gif")));
+        lCreditos = new JLabel(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "creditos.gif")));
         lCreditos.setBounds(20, 150, 550, 307);
         add(lCreditos);
 
-        lLogo = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "LogoTablero.png")));
+        lLogo = new JLabel(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "LogoTablero.png")));
         lLogo.setBounds(0, 5, 600, 60);
         add(lLogo);
 
-        btnVolver = new JButton(new ImageIcon(this.getClass().getResource(IMAGENES + "return.png")));
+        btnVolver = new JButton(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "return.png")));
         btnVolver.setText("Menu Principal");
         btnVolver.setBounds(175, 475, 250, 50);
         add(btnVolver);

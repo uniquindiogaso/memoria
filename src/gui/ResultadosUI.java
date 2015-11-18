@@ -34,8 +34,6 @@ public class ResultadosUI extends JFrame implements ActionListener {
     private ConfigPartidaUI conf;
     private JScrollPane scrollTabla;
 
-    private static final String IMAGENES = "../media/imagenes/";
-
     public ResultadosUI(PrincipalUI pri) {
         this.pri = pri;
         this.conf = pri.getConfP();
@@ -46,7 +44,7 @@ public class ResultadosUI extends JFrame implements ActionListener {
         setResizable(false);
         setLocationRelativeTo(null);
 
-        lLogo = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "LogoTablero.png")));
+        lLogo = new JLabel(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "LogoTablero.png")));
         lLogo.setBounds(0, 5, 600, 60);
         add(lLogo);
 
@@ -63,7 +61,7 @@ public class ResultadosUI extends JFrame implements ActionListener {
         btnJugar.setFont(new Font("Arial", Font.BOLD, 18));
         btnJugar.addActionListener(this);
 
-        btnVolver = new JButton(new ImageIcon(this.getClass().getResource(IMAGENES + "return.png")));
+        btnVolver = new JButton(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "return.png")));
         btnVolver.setText("Volver");
         btnVolver.setBounds(310, 520, 220, 50);
         add(btnVolver);

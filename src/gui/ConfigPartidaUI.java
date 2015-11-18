@@ -27,7 +27,6 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
 
     private JComboBox selJugador;
     private JComboBox selDificultad;
-    private static final String IMAGENES = "../media/imagenes/";
     private JLabel lLogo;
     private JLabel lSelJugador;
     private JLabel lSelDificultad;
@@ -37,7 +36,6 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
 
     //INSTANCIAR VENTANAS
     private PrincipalUI pri;
-    private Principal prinLog;
     private TableroUI tab;
     private JugadorUI jug;
 
@@ -47,10 +45,17 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
     public ConfigPartidaUI(PrincipalUI pri) {
         //Movimientos de ventanas
         this.pri = pri;
+
+        inicializarComponentes();
+        actualizarListJugadores();
+
+    }
+
+    private void inicializarComponentes() {
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        lLogo = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "LogoTablero.png")));
+        lLogo = new JLabel(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "LogoTablero.png")));
         lLogo.setBounds(0, 5, 600, 66);
         getContentPane().add(lLogo);
 
@@ -64,13 +69,12 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         selJugador.setFont(new Font("Arial", Font.BOLD, 18));
         add(selJugador);
 
-        actualizarListJugadores();
-
         btnAgregarJugador = new JButton("Agregar Jugador");
         btnAgregarJugador.setBounds(410, 195, 150, 35);
         btnAgregarJugador.setFont(new Font("Arial", Font.BOLD, 15));
         btnAgregarJugador.setBackground(new Color(238, 238, 238));
         btnAgregarJugador.setBorder(null);
+
         //Evitar que al ser clikeado quede enmarcado
         btnAgregarJugador.setFocusPainted(false);
         btnAgregarJugador.setBorderPainted(false);
@@ -105,7 +109,6 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         setSize(600, 600);
         setLocationRelativeTo(null);
         setResizable(false);
-
     }
 
     @Override
@@ -120,8 +123,8 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
                 tab = new TableroUI(pri, pri.getPrinLog().getJugadores().get(selJugador.getSelectedIndex()).getId(), selDificultad.getSelectedItem().toString());
                 tab.setVisible(true);
                 setVisible(false);
-            }else{
-                JOptionPane.showMessageDialog(null,"Debe crear un usuario para poder jugar.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe crear un usuario para poder jugar.");
             }
         } else if (ae.getSource() == btnVolver) {
             pri.setVisible(true);
@@ -129,7 +132,7 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         }
     }
 
-    public void actualizarListJugadores() {
+    private void actualizarListJugadores() {
         for (Jugador j : pri.getPrinLog().getJugadores()) {
             selJugador.addItem(j);
         }

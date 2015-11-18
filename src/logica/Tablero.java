@@ -25,7 +25,6 @@ public class Tablero {
     public int[][] construirTablero(int filas, int columnas) {
 
         ArrayList<Integer> posiciones = new ArrayList<>();
-
         int[][] matrizAleatoria = new int[filas][columnas];
 
         for (int i = 0; i < (filas * columnas) / 2; i++) {
@@ -68,9 +67,7 @@ public class Tablero {
 
         TimerTask timerTask = new TimerTask() {
             int segundos = 0;
-
             public void run() {
-
                 label.setText(String.valueOf(++segundos));
             }
         };

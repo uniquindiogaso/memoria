@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import logica.Principal;
 import logica.Tablero;
 
 public class TableroUI extends JFrame implements ActionListener {
@@ -48,7 +47,7 @@ public class TableroUI extends JFrame implements ActionListener {
         inicializarComponetes();
     }
 
-    public void inicializarComponetes() {
+    private void inicializarComponetes() {
         setLayout(null);
         setSize(600, 725);
         setLocationRelativeTo(null);
@@ -82,18 +81,12 @@ public class TableroUI extends JFrame implements ActionListener {
         for (int i = 0; i < btnJugadas.length; i++) {
             for (int j = 0; j < btnJugadas[i].length; j++) {
                 btnJugadas[i][j] = new JButton(defaultIcon);
-                //btnJugadas[i][j] = new JButton("NA");
-                //btnJugadas[i][j].setBounds(110 + 95 * j, 150 + 95 * i, 90, 90);
                 btnJugadas[i][j].setBounds(90 + 105 * j, 140 + 105 * i, 100, 100);
                 btnJugadas[i][j].addActionListener(this);
                 add(btnJugadas[i][j]);
             }
         }
 
-        /*btnReiniciar = new JButton("Reiniciar Partida");
-         btnReiniciar.setBounds(40, 600, 220, 48);
-         add(btnReiniciar);
-         btnReiniciar.setFont(new Font("Arial", Font.BOLD, 18));*/
         btnResultados = new JButton("Resultados");
         btnResultados.setBounds(60, 625, 220, 48);
         add(btnResultados);
@@ -122,84 +115,88 @@ public class TableroUI extends JFrame implements ActionListener {
             pri.setVisible(true);
             setVisible(false);
         } else if (ae.getSource() == btnRepetir) {
-            parejasEncontradas = 0;
-            tablero.pararCronometro();
-            lTiempo.setText("0");
-            lGanador.setVisible(false);
-            numJugadas = 0;
-            lJugadas.setText(String.valueOf(numJugadas));
-            matrizAleatoria = tablero.construirTablero(FILAS, COLUMNAS);
-
-            for (int i = 0; i < btnJugadas.length; i++) {
-                for (int j = 0; j < btnJugadas[i].length; j++) {
-                    //btnJugadas[i][j].setText("NA");
-                    btnJugadas[i][j].setIcon(defaultIcon);
-                    btnJugadas[i][j].setEnabled(true);
-                }
-            }
-
+            accionRepetirJuego();
         } else if (ae.getSource() == btnResultados) {
             res = new ResultadosUI(pri);
             res.setVisible(true);
             setVisible(false);
         } else {
-            for (int i = 0; i < btnJugadas.length; i++) {
-                for (int j = 0; j < btnJugadas[i].length; j++) {
-                    if (ae.getSource() == btnJugadas[i][j]) {
+            accionVerificarJugada(ae);
+        }
+    }
 
-                        if (!(btnJugadas[i][j].getIcon().toString().equals(defaultIcon.toString()))) {
-                            break;
-                        }
+    private void accionRepetirJuego() {
+        parejasEncontradas = 0;
+        tablero.pararCronometro();
+        lTiempo.setText("0");
+        lGanador.setVisible(false);
+        numJugadas = 0;
+        lJugadas.setText(String.valueOf(numJugadas));
+        matrizAleatoria = tablero.construirTablero(FILAS, COLUMNAS);
+
+        for (JButton[] btnJugada : btnJugadas) {
+            for (JButton btnJugada1 : btnJugada) {
+                btnJugada1.setIcon(defaultIcon);
+                btnJugada1.setEnabled(true);
+            }
+        }
+    }
+
+    private void accionVerificarJugada(ActionEvent ae) {
+        for (int i = 0; i < btnJugadas.length; i++) {
+            for (int j = 0; j < btnJugadas[i].length; j++) {
+                if (ae.getSource() == btnJugadas[i][j]) {
+
+                    if (!(btnJugadas[i][j].getIcon().toString().equals(defaultIcon.toString()))) {
+                        break;
+                    }
 //                        
-                        //Aumentar la Cantidad de Jugadas Realizadas
-                        lJugadas.setText(String.valueOf(++numJugadas));
+                    //Aumentar la Cantidad de Jugadas Realizadas
+                    lJugadas.setText(String.valueOf(++numJugadas));
 
-                        //Iniciar Conteo
-                        if (numJugadas == 1) {
-                            tablero.iniciarCronometro(lTiempo);
-                        }
-                        //btnJugadas[i][j].setText(String.valueOf(matrizAleatoria[i][j]));
-                        btnJugadas[i][j].setIcon(new ImageIcon(tablero.obtenerImagen(dificultad, matrizAleatoria[i][j])));
+                    //Iniciar Conteo
+                    if (numJugadas == 1) {
+                        tablero.iniciarCronometro(lTiempo);
+                    }
+                    //btnJugadas[i][j].setText(String.valueOf(matrizAleatoria[i][j]));
+                    btnJugadas[i][j].setIcon(new ImageIcon(tablero.obtenerImagen(dificultad, matrizAleatoria[i][j])));
 
-                        if (numJugadas % 2 == 0) {
+                    if (numJugadas % 2 == 0) {
 
-                            posSegundaJugada = new int[]{i, j};
+                        posSegundaJugada = new int[]{i, j};
 
-                            boolean pareja = tablero.analizarJugada(matrizAleatoria, posPrimeraJugada, posSegundaJugada);
+                        boolean pareja = tablero.analizarJugada(matrizAleatoria, posPrimeraJugada, posSegundaJugada);
 
-                            if (pareja) {
-                                btnJugadas[posPrimeraJugada[0]][posPrimeraJugada[1]].setEnabled(false);
-                                btnJugadas[posPrimeraJugada[0]][posPrimeraJugada[1]].setOpaque(false);
-                                btnJugadas[posSegundaJugada[0]][posSegundaJugada[1]].setEnabled(false);
-                                btnJugadas[posSegundaJugada[0]][posSegundaJugada[1]].setOpaque(false);
+                        if (pareja) {
+                            btnJugadas[posPrimeraJugada[0]][posPrimeraJugada[1]].setEnabled(false);
+                            btnJugadas[posPrimeraJugada[0]][posPrimeraJugada[1]].setOpaque(false);
+                            btnJugadas[posSegundaJugada[0]][posSegundaJugada[1]].setEnabled(false);
+                            btnJugadas[posSegundaJugada[0]][posSegundaJugada[1]].setOpaque(false);
 
-                                ++parejasEncontradas;
+                            ++parejasEncontradas;
 
-                                if (parejasEncontradas == (FILAS * COLUMNAS) / 2) {
-                                    tablero.pararCronometro();
-                                    pri.getPrinLog().actualizarPuntajes(id, Integer.valueOf(lTiempo.getText()), numJugadas);
-                                    System.out.println("" + pri.getPrinLog().getJugadores().size());
-                                    lGanador.setVisible(true);
+                            if (parejasEncontradas == (FILAS * COLUMNAS) / 2) {
+                                tablero.pararCronometro();
+                                pri.getPrinLog().actualizarPuntajes(id, Integer.valueOf(lTiempo.getText()), numJugadas);
+                                System.out.println("" + pri.getPrinLog().getJugadores().size());
+                                lGanador.setVisible(true);
 
-                                }
-
-                            } else {
-                                tapar = true;
                             }
                         } else {
-
-                            if (tapar) {
-                                btnJugadas[posPrimeraJugada[0]][posPrimeraJugada[1]].setIcon(defaultIcon);
-                                btnJugadas[posSegundaJugada[0]][posSegundaJugada[1]].setIcon(defaultIcon);
-                                tapar = false;
-                            }
-                            posPrimeraJugada = new int[]{i, j};
+                            tapar = true;
                         }
+                    } else {
 
+                        if (tapar) {
+                            btnJugadas[posPrimeraJugada[0]][posPrimeraJugada[1]].setIcon(defaultIcon);
+                            btnJugadas[posSegundaJugada[0]][posSegundaJugada[1]].setIcon(defaultIcon);
+                            tapar = false;
+                        }
+                        posPrimeraJugada = new int[]{i, j};
                     }
+
                 }
             }
-
         }
     }
 

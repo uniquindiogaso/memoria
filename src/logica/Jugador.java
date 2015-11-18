@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package logica;
 
-import java.util.Comparator;
-
-public class Jugador implements Comparator<Jugador> {
+public class Jugador {
 
     private int id;
     private String nombre;
@@ -62,10 +55,4 @@ public class Jugador implements Comparator<Jugador> {
     public String toString() {
         return id + " - " + nombre;
     }
-
-    @Override
-    public int compare(Jugador j1, Jugador j2) {
-        return new Integer(j1.getnJugadas()).compareTo(j2.getnJugadas());
-    }
-
 }

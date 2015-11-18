@@ -35,21 +35,22 @@ public class JugadorUI extends JFrame implements ActionListener {
     private JLabel lJugadores;
     private JTable lstJugadores;
     private JScrollPane scrollTabla;
-    private static final String IMAGENES = "../media/imagenes/";
 
     private PrincipalUI pri;
 
     public JugadorUI(PrincipalUI pri) {
-
         this.pri = pri;
+        inicializarComponentes();
+    }
 
+    private void inicializarComponentes() {
         setLayout(null);
         setTitle("Agregar Jugador");
         setSize(600, 700);
         setLocationRelativeTo(null);
         setResizable(false);
 
-        lLogo = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "LogoTablero.png")));
+        lLogo = new JLabel(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "LogoTablero.png")));
         lLogo.setBounds(0, 5, 600, 60);
         add(lLogo);
 
@@ -83,7 +84,7 @@ public class JugadorUI extends JFrame implements ActionListener {
         btnAgregar.setFont(new Font("Arial", Font.BOLD, 18));
         btnAgregar.addActionListener(this);
 
-        btnVolver = new JButton(new ImageIcon(this.getClass().getResource(IMAGENES + "return.png")));
+        btnVolver = new JButton(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "return.png")));
         btnVolver.setText("Volver");
         btnVolver.setBounds(310, 600, 220, 50);
         add(btnVolver);
@@ -97,21 +98,18 @@ public class JugadorUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnAgregar) {
-
             if (!cmpNombre.getText().isEmpty()) {
                 if (pri.getPrinLog().agregarJugador(cmpNombre.getText(), Integer.valueOf(cmpCodigo.getText()))) {
                     actualizarTabla();
                     cmpCodigo.setText(String.valueOf(pri.getPrinLog().getJugadores().size() + 1));
                     cmpNombre.setText("");
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Para registrar el jugador se debe de digitar nombre de usuario", "Información Incompleta", JOptionPane.ERROR_MESSAGE);
             }
-
         } else {
             pri.setVisible(true);
             setVisible(false);
-
         }
 
     }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import java.awt.Font;
@@ -23,6 +18,7 @@ import logica.Tablero;
 public class PrincipalUI extends JFrame implements ActionListener {
 
     public static final String IMAGENES = "../media/imagenes/";
+
     private JLabel lLogo;
     private JButton btnJugar;
     private JButton btnRegistrar;
@@ -36,23 +32,16 @@ public class PrincipalUI extends JFrame implements ActionListener {
     private CreditosUI cre;
     private JugadorUI jug;
     private ResultadosUI res;
-// private TableroUI tab;
-
     private Principal prinLog;
 
-
     public PrincipalUI() {
-
         prinLog = new Principal();
-        
-
-        //MOvimiento entre ventanas
         cre = new CreditosUI(this);
-        
-//        this.tab = new TableroUI("FACIL");
-        //this.confP = new ConfigPartidaUI(this);
-       
 
+        inicializarComponentes();
+    }
+
+    private void inicializarComponentes() {
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -94,7 +83,6 @@ public class PrincipalUI extends JFrame implements ActionListener {
         setSize(600, 600);
         setLocationRelativeTo(null);
         setResizable(false);
-
     }
 
     @Override
@@ -112,12 +100,12 @@ public class PrincipalUI extends JFrame implements ActionListener {
             res = new ResultadosUI(this);
             res.setVisible(true);
             setVisible(false);
-            
+
         } else if (ae.getSource() == btnCreditos) {
             cre.setVisible(true);
             setVisible(false);
         } else if (ae.getSource() == btnSalir) {
-            JOptionPane.showMessageDialog(null, "Hasta Luego");
+            JOptionPane.showMessageDialog(null, "¡Hasta Luego!");
             System.exit(0);
 
         }
@@ -154,8 +142,7 @@ public class PrincipalUI extends JFrame implements ActionListener {
     public void setConfP(ConfigPartidaUI confP) {
         this.confP = confP;
     }
-    
-    
+
     public Principal getPrinLog() {
         return prinLog;
     }
