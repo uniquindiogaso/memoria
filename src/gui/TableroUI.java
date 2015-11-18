@@ -9,44 +9,60 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import logica.Tablero;
 
+/**
+ *
+ * @author Cristian Toro, Gustavo Salgado y Laura Rúa
+ */
 public class TableroUI extends JFrame implements ActionListener {
 
-    int FILAS = 4;
-    int COLUMNAS = 4;
+    private int FILAS = 4;
+    private int COLUMNAS = 4;
 
-    private int numJugadas;
-    private String dificultad;
-    private JButton btnJugadas[][];
     private JLabel lLogo;
     private JLabel lJugadas;
     private JLabel lTiempo;
     private JLabel lGanador;
-    private ImageIcon defaultIcon;
+
     private JButton btnResultados;
     private JButton btnRepetir;
     private JButton btnVolver;
-    private Tablero tablero;
-    int[][] matrizAleatoria;
-    int[] posPrimeraJugada;
-    int[] posSegundaJugada;
-    private boolean tapar;
+
+    private JButton btnJugadas[][];
+
+    private ImageIcon defaultIcon;
+
+    private String dificultad;
+
+    private int[][] matrizAleatoria;
+    private int[] posPrimeraJugada;
+    private int[] posSegundaJugada;
+    private boolean bandera;
     private int parejasEncontradas;
+    private int numJugadas;
+    private int id;
 
     private PrincipalUI pri;
     private ResultadosUI res;
-    private int id;
-
-    //principal Id usuario
-    //INSTANCIAS VENTANAS
+    private Tablero tablero;
+    
+    /**
+     * MÉTODO CONSTRUCTOR
+     * @param pri
+     * @param id
+     * @param dificultad 
+     */
     public TableroUI(PrincipalUI pri, int id, String dificultad) {
         this.pri = pri;
         tablero = new Tablero();
         this.dificultad = dificultad;
         this.id = id;
-        tapar = false;
+        bandera = false;
         inicializarComponetes();
     }
 
+    /**
+     * 
+     */
     private void inicializarComponetes() {
         setTitle("..: Paranoic Memory :..");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -127,6 +143,9 @@ public class TableroUI extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * Genera un nuevo juego
+     */
     private void accionRepetirJuego() {
         parejasEncontradas = 0;
         tablero.pararCronometro();
@@ -144,6 +163,10 @@ public class TableroUI extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     *
+     * @param ae
+     */
     private void accionVerificarJugada(ActionEvent ae) {
         for (int i = 0; i < btnJugadas.length; i++) {
             for (int j = 0; j < btnJugadas[i].length; j++) {
@@ -160,7 +183,7 @@ public class TableroUI extends JFrame implements ActionListener {
                     if (numJugadas == 1) {
                         tablero.iniciarCronometro(lTiempo);
                     }
-                    //btnJugadas[i][j].setText(String.valueOf(matrizAleatoria[i][j]));
+
                     btnJugadas[i][j].setIcon(new ImageIcon(tablero.obtenerImagen(dificultad, matrizAleatoria[i][j])));
 
                     if (numJugadas % 2 == 0) {
@@ -180,19 +203,19 @@ public class TableroUI extends JFrame implements ActionListener {
                             if (parejasEncontradas == (FILAS * COLUMNAS) / 2) {
                                 tablero.pararCronometro();
                                 pri.getPrinLog().actualizarPuntajes(id, Integer.valueOf(lTiempo.getText()), numJugadas);
-                                System.out.println("" + pri.getPrinLog().getJugadores().size());
+                                //System.out.println("" + pri.getPrinLog().getJugadores().size());
                                 lGanador.setVisible(true);
 
                             }
                         } else {
-                            tapar = true;
+                            bandera = true;
                         }
                     } else {
 
-                        if (tapar) {
+                        if (bandera) {
                             btnJugadas[posPrimeraJugada[0]][posPrimeraJugada[1]].setIcon(defaultIcon);
                             btnJugadas[posSegundaJugada[0]][posSegundaJugada[1]].setIcon(defaultIcon);
-                            tapar = false;
+                            bandera = false;
                         }
                         posPrimeraJugada = new int[]{i, j};
                     }

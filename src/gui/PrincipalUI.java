@@ -13,7 +13,7 @@ import logica.Tablero;
 
 /**
  *
- * @author gusta
+ * @author Cristian Toro, Gustavo Salgado y Laura Rúa
  */
 public class PrincipalUI extends JFrame implements ActionListener {
 
@@ -45,7 +45,10 @@ public class PrincipalUI extends JFrame implements ActionListener {
         setTitle("Menú Principal ..: Paranoic Memory :..");
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        setSize(600, 600);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        
         tablero = new Tablero();
         lLogo = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "LogoTablero.png")));
         lLogo.setBounds(0, 5, 600, 66);
@@ -81,9 +84,6 @@ public class PrincipalUI extends JFrame implements ActionListener {
         btnSalir.setFont(new Font("Arial", Font.BOLD, 18));
         btnSalir.addActionListener(this);
 
-        setSize(600, 600);
-        setLocationRelativeTo(null);
-        setResizable(false);
     }
 
     @Override
@@ -111,43 +111,85 @@ public class PrincipalUI extends JFrame implements ActionListener {
 
         }
     }
+    
+    //MÉTODOS GETTERS AND SETTERS
 
+    /**
+     * Método get de JugadorUI
+     * @return jug
+     */
     public JugadorUI getJug() {
         return jug;
     }
 
+    /**
+     * Método set de JugadorUI
+     * @param jug 
+     */
     public void setJug(JugadorUI jug) {
         this.jug = jug;
     }
 
+    /**
+     * Método get de Tablero
+     * @return tablero
+     */
     public Tablero getTablero() {
         return tablero;
     }
 
+    /**
+     * Método set de tablero
+     * @param tablero 
+     */
     public void setTablero(Tablero tablero) {
         this.tablero = tablero;
     }
 
+    /**
+     * Método get de ResultadosUI
+     * @return res
+     */
     public ResultadosUI getRes() {
         return res;
     }
 
+    /**
+     * Método set de ResultadosUI
+     * @param res 
+     */
     public void setRes(ResultadosUI res) {
         this.res = res;
     }
 
+    /**
+     * Método get de configurarPartidaUI
+     * @return confP
+     */
     public ConfigPartidaUI getConfP() {
         return confP;
     }
 
+    /**
+     * Método set de configurarPartidaUI
+     * @param confP 
+     */
     public void setConfP(ConfigPartidaUI confP) {
         this.confP = confP;
     }
 
+    /**
+     * Método get de Principal - lógica
+     * @return prinLog
+     */
     public Principal getPrinLog() {
         return prinLog;
     }
 
+    /**
+     * Método set de Principal - lógica
+     * @param prinLog 
+     */
     public void setPrinLog(Principal prinLog) {
         this.prinLog = prinLog;
     }

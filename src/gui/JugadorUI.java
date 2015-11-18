@@ -16,15 +16,18 @@ import javax.swing.table.JTableHeader;
 
 /**
  *
- * @author gusta
+ * @author Cristian Toro, Gustavo Salgado y Laura Rúa
  */
 public class JugadorUI extends JFrame implements ActionListener {
 
-    private JButton btnVolver;
-    private JButton btnAgregar;
+    //ATRIBUTOS
+    private JLabel lLogo;
     private JLabel lNombre;
     private JLabel lCodigo;
-    private JLabel lLogo;
+
+    private JButton btnVolver;
+    private JButton btnAgregar;
+
     private JTextField cmpCodigo;
     private JTextField cmpNombre;
     private JLabel lJugadores;
@@ -33,11 +36,13 @@ public class JugadorUI extends JFrame implements ActionListener {
 
     private PrincipalUI pri;
 
+    //MÉTODO CONSTRUCTOR
     public JugadorUI(PrincipalUI pri) {
         this.pri = pri;
         inicializarComponentes();
     }
 
+    //INICIALIZACIÓN DE COMPONENTES
     private void inicializarComponentes() {
         setLayout(null);
         setTitle("Agregar Jugador ..: Paranoic Memory :..");
@@ -60,20 +65,21 @@ public class JugadorUI extends JFrame implements ActionListener {
         lNombre.setFont(new Font("Arial", Font.BOLD, 28));
         add(lNombre);
 
+        lJugadores = new JLabel("Jugadores Registrados");
+        lJugadores.setBounds(50, 245, 300, 35);
+        lJugadores.setFont(new Font("Arial", Font.BOLD, 20));
+        add(lJugadores);
+
         cmpCodigo = new JTextField();
         cmpCodigo.setBounds(190, 100, 280, 35);
+        cmpCodigo.setText(String.valueOf(pri.getPrinLog().getJugadores().size() + 1));
+        cmpCodigo.setEditable(false);
         add(cmpCodigo);
 
         cmpNombre = new JTextField();
         cmpNombre.setBounds(190, 170, 280, 35);
         add(cmpNombre);
 
-        lJugadores = new JLabel("Jugadores Registrados");
-        lJugadores.setBounds(50, 245, 300, 35);
-        lJugadores.setFont(new Font("Arial", Font.BOLD, 20));
-        add(lJugadores);
-
-        //actualizarTabla();
         btnAgregar = new JButton("Agregar");
         btnAgregar.setBounds(60, 600, 220, 50);
         add(btnAgregar);
@@ -86,9 +92,6 @@ public class JugadorUI extends JFrame implements ActionListener {
         add(btnVolver);
         btnVolver.setFont(new Font("Arial", Font.BOLD, 18));
         btnVolver.addActionListener(this);
-
-        cmpCodigo.setText(String.valueOf(pri.getPrinLog().getJugadores().size() + 1));
-        cmpCodigo.setEditable(false);
     }
 
     @Override
@@ -107,9 +110,11 @@ public class JugadorUI extends JFrame implements ActionListener {
             pri.setVisible(true);
             setVisible(false);
         }
-
     }
 
+    /**
+     * Actualiza la tabla que se muestra en la ventana
+     */
     public void actualizarTabla() {
         String datosJugadores[][] = pri.getPrinLog().listarJugadores();
 

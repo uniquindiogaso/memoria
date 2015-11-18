@@ -15,15 +15,17 @@ import logica.Jugador;
 
 /**
  *
- * @author gusta
+ * @author Cristian Toro, Gustavo Salgado y Laura Rúa
  */
 public class ConfigPartidaUI extends JFrame implements ActionListener {
 
-    private JComboBox selJugador;
-    private JComboBox selDificultad;
     private JLabel lLogo;
     private JLabel lSelJugador;
     private JLabel lSelDificultad;
+
+    private JComboBox selJugador;
+    private JComboBox selDificultad;
+
     private JButton btnAgregarJugador;
     private JButton btnJugar;
     private JButton btnVolver;
@@ -36,8 +38,12 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
     // Listado de jugadores
     private ArrayList<Jugador> jugadores;
 
+    
+    /**
+     * MÉTODO CONSTRUCTOR
+     * @param pri 
+     */
     public ConfigPartidaUI(PrincipalUI pri) {
-        //Movimientos de ventanas
         this.pri = pri;
 
         inicializarComponentes();
@@ -45,8 +51,12 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
 
     }
 
+    //INICIALIZACIÓN DE COMPONENTES
     private void inicializarComponentes() {
         setLayout(null);
+        setSize(600, 600);
+        setLocationRelativeTo(null);
+        setResizable(false);
         setTitle("Seleccione Jugador y Nivel de Dificultad ..: Paranoic Memory :..");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -59,26 +69,14 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         lSelJugador.setFont(new Font("Arial", Font.BOLD, 20));
         add(lSelJugador);
 
+        lSelDificultad = new JLabel("Seleccionar Dificultad");
+        lSelDificultad.setBounds(50, 245, 500, 35);
+        lSelDificultad.setFont(new Font("Arial", Font.BOLD, 20));
+
         selJugador = new JComboBox();
         selJugador.setBounds(50, 140, 500, 50);
         selJugador.setFont(new Font("Arial", Font.BOLD, 18));
         add(selJugador);
-
-        btnAgregarJugador = new JButton("Agregar Jugador");
-        btnAgregarJugador.setBounds(410, 195, 150, 35);
-        btnAgregarJugador.setFont(new Font("Arial", Font.BOLD, 15));
-        btnAgregarJugador.setBackground(new Color(238, 238, 238));
-        btnAgregarJugador.setBorder(null);
-
-        //Evitar que al ser clikeado quede enmarcado
-        btnAgregarJugador.setFocusPainted(false);
-        btnAgregarJugador.setBorderPainted(false);
-        add(btnAgregarJugador);
-        btnAgregarJugador.addActionListener(this);
-
-        lSelDificultad = new JLabel("Seleccionar Dificultad");
-        lSelDificultad.setBounds(50, 245, 500, 35);
-        lSelDificultad.setFont(new Font("Arial", Font.BOLD, 20));
 
         selDificultad = new JComboBox();
         selDificultad.setFont(new Font("Arial", Font.BOLD, 18));
@@ -88,6 +86,17 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         add(lSelDificultad);
         selDificultad.setBounds(50, 285, 500, 50);
         getContentPane().add(selDificultad);
+        
+        btnAgregarJugador = new JButton("Agregar Jugador");
+        btnAgregarJugador.setBounds(410, 195, 150, 35);
+        btnAgregarJugador.setFont(new Font("Arial", Font.BOLD, 15));
+        btnAgregarJugador.setBackground(new Color(238, 238, 238));
+        btnAgregarJugador.setBorder(null);
+        //Evitar que al ser clikeado quede enmarcado
+        btnAgregarJugador.setFocusPainted(false);
+        btnAgregarJugador.setBorderPainted(false);
+        add(btnAgregarJugador);
+        btnAgregarJugador.addActionListener(this);
 
         btnJugar = new JButton("Jugar");
         btnJugar.setBounds(50, 390, 500, 50);
@@ -100,10 +109,6 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         add(btnVolver);
         btnVolver.setFont(new Font("Arial", Font.BOLD, 18));
         btnVolver.addActionListener(this);
-
-        setSize(600, 600);
-        setLocationRelativeTo(null);
-        setResizable(false);
     }
 
     @Override
@@ -127,6 +132,9 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * Agrega a los jugadores al combobox de la ventana
+     */
     private void actualizarListJugadores() {
         for (Jugador j : pri.getPrinLog().getJugadores()) {
             selJugador.addItem(j);

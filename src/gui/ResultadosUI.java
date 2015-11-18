@@ -14,19 +14,24 @@ import javax.swing.table.JTableHeader;
 
 /**
  *
- * @author gusta
+ * @author Cristian Toro, Gustavo Salgado y Laura Rúa
  */
 public class ResultadosUI extends JFrame implements ActionListener {
 
-    private JButton btnVolver;
+    //ATRIBUTOS
     private JLabel lLogo;
-    private JButton btnJugar;
     private JLabel lResultados;
+
+    private JButton btnVolver;
+    private JButton btnJugar;
+
     private JTable lstResultados;
-    private PrincipalUI pri;
-    private ConfigPartidaUI conf;
     private JScrollPane scrollTabla;
 
+    private PrincipalUI pri;
+    private ConfigPartidaUI conf;
+
+    //MÉTODO CONSTRUCTOR
     public ResultadosUI(PrincipalUI pri) {
         this.pri = pri;
         this.conf = pri.getConfP();
@@ -50,6 +55,9 @@ public class ResultadosUI extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * Actualiza la tabla 
+     */
     public void actualizarTabla() {
         String datosJugadores[][] = pri.getPrinLog().listarResultados();
         lstResultados = new JTable(datosJugadores, new String[]{"Usuario", "Jugadas", "Tiempo"});
@@ -68,6 +76,9 @@ public class ResultadosUI extends JFrame implements ActionListener {
         add(scrollResultados);
     }
 
+    /**
+     * Inicializa los componentes utilizados en la ventana
+     */
     private void inicializarComponentes() {
         setTitle("Resultados ..: Paranoic Memory :..");
         setLayout(null);

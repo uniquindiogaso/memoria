@@ -10,20 +10,25 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author gusta
+ * @author Cristian Toro, Gustavo Salgado y Laura Rúa
  */
 public class CreditosUI extends JFrame implements ActionListener {
 
-    private JButton btnVolver;
+    //ATRIBUTOS
     private JLabel lLogo;
     private JLabel lCreditos;
+
+    private JButton btnVolver;
+
     private PrincipalUI pri;
 
+    //MÉTODO CONSTRUCTOR
     public CreditosUI(PrincipalUI pri) {
         this.pri = pri;
         inicializarComponentes();
     }
 
+    //INICIALIZACIÓN DE COMPONENTES
     private void inicializarComponentes() {
         setTitle("Créditos ..: Paranoic Memory :..");
         setLayout(null);
@@ -32,13 +37,13 @@ public class CreditosUI extends JFrame implements ActionListener {
         setSize(600, 600);
         setLocationRelativeTo(null);
 
-        lCreditos = new JLabel(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "creditos.gif")));
-        lCreditos.setBounds(20, 150, 550, 307);
-        add(lCreditos);
-
         lLogo = new JLabel(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "LogoTablero.png")));
         lLogo.setBounds(0, 5, 600, 60);
         add(lLogo);
+
+        lCreditos = new JLabel(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "creditos.gif")));
+        lCreditos.setBounds(20, 150, 550, 307);
+        add(lCreditos);
 
         btnVolver = new JButton(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "return.png")));
         btnVolver.setText("Menu Principal");
