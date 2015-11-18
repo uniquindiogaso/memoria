@@ -48,6 +48,8 @@ public class TableroUI extends JFrame implements ActionListener {
     }
 
     private void inicializarComponetes() {
+        setTitle("..: Paranoic Memory :..");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setSize(600, 725);
         setLocationRelativeTo(null);

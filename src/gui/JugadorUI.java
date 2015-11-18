@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import java.awt.Dimension;
@@ -45,7 +40,8 @@ public class JugadorUI extends JFrame implements ActionListener {
 
     private void inicializarComponentes() {
         setLayout(null);
-        setTitle("Agregar Jugador");
+        setTitle("Agregar Jugador ..: Paranoic Memory :..");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 700);
         setLocationRelativeTo(null);
         setResizable(false);

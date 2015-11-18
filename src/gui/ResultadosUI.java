@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -14,7 +8,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
@@ -38,35 +31,7 @@ public class ResultadosUI extends JFrame implements ActionListener {
         this.pri = pri;
         this.conf = pri.getConfP();
 
-        setTitle("Resultados");
-        setLayout(null);
-        setSize(600, 620);
-        setResizable(false);
-        setLocationRelativeTo(null);
-
-        lLogo = new JLabel(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "LogoTablero.png")));
-        lLogo.setBounds(0, 5, 600, 60);
-        add(lLogo);
-
-        lResultados = new JLabel("RECORDS");
-        lResultados.setBounds(200, 100, 200, 40);
-        lResultados.setFont(new Font("Arial", Font.BOLD, 28));
-        add(lResultados);
-
-        actualizarTabla();
-
-        btnJugar = new JButton("Jugar de nuevo");
-        btnJugar.setBounds(60, 520, 220, 50);
-        add(btnJugar);
-        btnJugar.setFont(new Font("Arial", Font.BOLD, 18));
-        btnJugar.addActionListener(this);
-
-        btnVolver = new JButton(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "return.png")));
-        btnVolver.setText("Volver");
-        btnVolver.setBounds(310, 520, 220, 50);
-        add(btnVolver);
-        btnVolver.setFont(new Font("Arial", Font.BOLD, 18));
-        btnVolver.addActionListener(this);
+        inicializarComponentes();
     }
 
     @Override
@@ -101,6 +66,39 @@ public class ResultadosUI extends JFrame implements ActionListener {
         JScrollPane scrollResultados = new JScrollPane(lstResultados);
         scrollResultados.setBounds(75, 150, 450, 350);
         add(scrollResultados);
+    }
+
+    private void inicializarComponentes() {
+        setTitle("Resultados ..: Paranoic Memory :..");
+        setLayout(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(600, 620);
+        setResizable(false);
+        setLocationRelativeTo(null);
+
+        lLogo = new JLabel(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "LogoTablero.png")));
+        lLogo.setBounds(0, 5, 600, 60);
+        add(lLogo);
+
+        lResultados = new JLabel("RECORDS");
+        lResultados.setBounds(200, 100, 200, 40);
+        lResultados.setFont(new Font("Arial", Font.BOLD, 28));
+        add(lResultados);
+
+        actualizarTabla();
+
+        btnJugar = new JButton("Jugar de nuevo");
+        btnJugar.setBounds(60, 520, 220, 50);
+        add(btnJugar);
+        btnJugar.setFont(new Font("Arial", Font.BOLD, 18));
+        btnJugar.addActionListener(this);
+
+        btnVolver = new JButton(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "return.png")));
+        btnVolver.setText("Volver");
+        btnVolver.setBounds(310, 520, 220, 50);
+        add(btnVolver);
+        btnVolver.setFont(new Font("Arial", Font.BOLD, 18));
+        btnVolver.addActionListener(this);
     }
 
 }

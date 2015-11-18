@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import java.awt.Font;
@@ -30,8 +25,9 @@ public class CreditosUI extends JFrame implements ActionListener {
     }
 
     private void inicializarComponentes() {
-        setTitle("Créditos");
+        setTitle("Créditos ..: Paranoic Memory :..");
         setLayout(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setSize(600, 600);
         setLocationRelativeTo(null);

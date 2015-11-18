@@ -42,6 +42,7 @@ public class PrincipalUI extends JFrame implements ActionListener {
     }
 
     private void inicializarComponentes() {
+        setTitle("Menú Principal ..: Paranoic Memory :..");
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

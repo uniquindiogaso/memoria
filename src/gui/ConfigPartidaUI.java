@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import java.awt.Color;
@@ -17,7 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import logica.Jugador;
-import logica.Principal;
 
 /**
  *
@@ -53,6 +47,7 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
 
     private void inicializarComponentes() {
         setLayout(null);
+        setTitle("Seleccione Jugador y Nivel de Dificultad ..: Paranoic Memory :..");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         lLogo = new JLabel(new ImageIcon(this.getClass().getResource(PrincipalUI.IMAGENES + "LogoTablero.png")));
