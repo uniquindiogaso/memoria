@@ -89,6 +89,7 @@ public class ResultadosUI extends JFrame implements ActionListener {
             //generar nueva instancia
             if (conf == null) {
                 conf = new ConfigPartidaUI(pri);
+                conf.actualizarListJugadores();
             }
             conf.setVisible(true);
             setVisible(false);

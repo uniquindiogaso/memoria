@@ -139,7 +139,7 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
     /**
      * Agrega a los jugadores al combobox de la ventana
      */
-    private void actualizarListJugadores() {
+    public void actualizarListJugadores() {
         for (Jugador j : pri.getPrinLog().getJugadores()) {
             selJugador.addItem(j);
         }
