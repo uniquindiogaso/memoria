@@ -10,15 +10,17 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
+ * Ésta es la clase PrincipalTest, aquí se realizan las pruebas unitarias de la clase Principal del paquete logica
  *
- * @author LAURA
+ * @author Cristian Toro, Gustavo Salgado y Laura Rúa
+ * @version 1.0
  */
 public class PrincipalTest {
 
     private static Principal p;
 
     /**
-     * Al iniciacio del pool de pruebas
+     * Al iniciacion del pool de pruebas
      * se generara una instancia de principal
      * para que las pruebas que lo requieran puedan usarla 
      * sin necesidad de volver a crear e instanciar a principal

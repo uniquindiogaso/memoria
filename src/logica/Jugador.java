@@ -26,22 +26,6 @@ public class Jugador {
         this.nombre = nombre;
     }
 
-    /**
-     * Método constructor de la clase Jugador, en el paquete logica, que
-     * inicializa todos los atributos del jugador
-     *
-     * @param codigo el código del jugador
-     * @param nombre el nombre del jugador usado en la aplicación
-     * @param nJugadas la cantidad de jugadas hechas por el jugador
-     * @param tiempo el tiempo en el cual el jugador terminó la partida
-     */
-    public Jugador(int codigo, String nombre, int nJugadas, int tiempo) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.nJugadas = nJugadas;
-        this.tiempo = tiempo;
-    }
-
     //MÉTODOS GETTERS AND SETTERS
     /**
      * Método get del Id del jugador
