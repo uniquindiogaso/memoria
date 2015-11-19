@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import logica.Tablero;
 
 /**
@@ -44,12 +45,13 @@ public class TableroUI extends JFrame implements ActionListener {
     private PrincipalUI pri;
     private ResultadosUI res;
     private Tablero tablero;
-    
+
     /**
      * MÉTODO CONSTRUCTOR
+     *
      * @param pri
      * @param id
-     * @param dificultad 
+     * @param dificultad
      */
     public TableroUI(PrincipalUI pri, int id, String dificultad) {
         this.pri = pri;
@@ -61,7 +63,7 @@ public class TableroUI extends JFrame implements ActionListener {
     }
 
     /**
-     * 
+     *
      */
     private void inicializarComponetes() {
         setTitle("..: Paranoic Memory :..");
@@ -202,10 +204,11 @@ public class TableroUI extends JFrame implements ActionListener {
 
                             if (parejasEncontradas == (FILAS * COLUMNAS) / 2) {
                                 tablero.pararCronometro();
-                                pri.getPrinLog().actualizarPuntajes(id, Integer.valueOf(lTiempo.getText()), numJugadas);
-                                //System.out.println("" + pri.getPrinLog().getJugadores().size());
-                                lGanador.setVisible(true);
-
+                                if (pri.getPrinLog().actualizarPuntajes(id, Integer.valueOf(lTiempo.getText()), numJugadas)) {
+                                    lGanador.setVisible(true);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "No se logró actualizar su puntaje", "Upss!", JOptionPane.ERROR_MESSAGE);
+                                }
                             }
                         } else {
                             bandera = true;
