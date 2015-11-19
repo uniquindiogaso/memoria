@@ -38,28 +38,50 @@ public class Principal {
         return jugadores;
     }
 
+    /**
+     * Método set del ArrayList de jugadores
+     * @param jugadores el ArrayList 
+     */
     public void setJugadores(ArrayList<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
 
-    public int buscarJugador(int id) {
+    /**
+     * Busca el jugador dentro del ArrayList
+     * @param codigo el código del jugador a buscar
+     * @return la posición en donde está el jugador o -1 si no lo encuentra
+     */
+    public int buscarJugador(int codigo) {
         for (int i = 0; i < jugadores.size(); i++) {
-            if (jugadores.get(i).getCodigo() == id) {
+            if (jugadores.get(i).getCodigo() == codigo) {
                 return i;
             }
         }
         return -1;
     }
 
-    public boolean agregarJugador(String nom, int id) {
-        if (buscarJugador(id) == -1) {
-            return jugadores.add(new Jugador(id, nom));
+    /**
+     * Agrega el jugador al ArrayList de jugadores
+     * @param nom el nombre del jugador a agregar
+     * @param codigo el código del jugador a agregar
+     * @return true si se agregó el jugador, de lo contrario false si no se pudo agregar
+     */
+    public boolean agregarJugador(String nom, int codigo) {
+        if (buscarJugador(codigo) == -1) {
+            return jugadores.add(new Jugador(codigo, nom));
         }
         return false;
     }
 
-    public boolean actualizarPuntajes(int id, int tiempo, int jugadas) {
-        int pos = buscarJugador(id);
+    /**
+     * Actualiza el puntaje del jugador
+     * @param codigo el código del jugador al que se le va a actualizar el puntaje
+     * @param tiempo el nuevo tiempo del jugador
+     * @param jugadas las nuevas cantidades de jugadas del jugador
+     * @return true si se pudo actualizar el puntaje, de lo contrario false si no pudo actualizar
+     */
+    public boolean actualizarPuntajes(int codigo, int tiempo, int jugadas) {
+        int pos = buscarJugador(codigo);
         if (pos != -1) {
             int j = jugadores.get(pos).getnJugadas();
             int t = jugadores.get(pos).getTiempo();
@@ -76,6 +98,10 @@ public class Principal {
         return false;
     }
 
+    /**
+     * Genera la lista de los jugadores
+     * @return una matriz  de String con la lista de los jugadores
+     */
     public String[][] listarJugadores() {
         String[][] listado = new String[jugadores.size()][3];
         for (int i = 0; i < listado.length; i++) {
@@ -86,11 +112,16 @@ public class Principal {
         return listado;
     }
 
+    /**
+     * Genera la lista de los resultados de los jugadores ordenados con el número de jugadas de menor a mayor
+     * @return una matriz de String con la lista de jugadores ordenada según los resultados
+     */
     public String[][] listarResultados() {
 
         ArrayList<Jugador> listaJugadores = jugadores;
 
         String[][] lisResultados = new String[listaJugadores.size()][3];
+        
         for (int i = 0; i < lisResultados.length; i++) {
             for (int j = i; j < lisResultados.length; j++) {
                 if (listaJugadores.get(i).getnJugadas() != listaJugadores.get(j).getnJugadas()) {
@@ -98,16 +129,12 @@ public class Principal {
                         Jugador aux = listaJugadores.get(i);
                         listaJugadores.set(i, listaJugadores.get(j));
                         listaJugadores.set(j, aux);
-                        System.out.println("ORGANIZÓ POR JUGADAS");
-                        System.out.println("jugador 1" + listaJugadores);
                     }
                 } else {
                     if (listaJugadores.get(i).getTiempo() > listaJugadores.get(j).getTiempo()) {
                         Jugador aux = listaJugadores.get(i);
                         listaJugadores.set(i, listaJugadores.get(j));
                         listaJugadores.set(j, aux);
-                        System.out.println("ORGANIZÓ POR TIEMPO");
-                        System.out.println("jugador 1" + listaJugadores);
                     }
                 }
             }

@@ -8,8 +8,10 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 
 /**
+ * Ésta es la clase TableroTest, aquí se realizan las pruebas unitarias de la clase Tablero del paquete logica
  *
- * @author gusta
+ * @author Cristian Toro, Gustavo Salgado y Laura Rúa
+ * @version 1.0
  */
 public class TableroTest {
 
@@ -19,7 +21,7 @@ public class TableroTest {
     }
 
     /**
-     * Al iniciacio del pool de pruebas se generara una instancia de tablero
+     * Al iniciacion del pool de pruebas se generara una instancia de tablero
      * para que las pruebas que lo requieran puedan usarla sin necesidad de
      * volver a crear e instanciar a tablero
      */

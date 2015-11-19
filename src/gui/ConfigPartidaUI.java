@@ -42,7 +42,7 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
 
     
     /**
-     * Método constructor de la clase ConfigPardtidaUI
+     * Método constructor de la clase ConfigPartidaUI
      * @param pri objeto tipo PrincipalUI, que es la ventana principal de la aplicación
      */
     public ConfigPartidaUI(PrincipalUI pri) {
