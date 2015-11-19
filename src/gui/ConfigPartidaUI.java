@@ -14,11 +14,13 @@ import javax.swing.JOptionPane;
 import logica.Jugador;
 
 /**
- *
+ * Ésta Interfaz permite configurar la partida, determinando el jugador y la dificultad del juego
  * @author Cristian Toro, Gustavo Salgado y Laura Rúa
+ * @version 1.0
  */
 public class ConfigPartidaUI extends JFrame implements ActionListener {
 
+    //ATRIBUTOS
     private JLabel lLogo;
     private JLabel lSelJugador;
     private JLabel lSelDificultad;
@@ -40,8 +42,8 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
 
     
     /**
-     * MÉTODO CONSTRUCTOR
-     * @param pri 
+     * Método constructor de la clase ConfigPardtidaUI
+     * @param pri objeto tipo PrincipalUI, que es la ventana principal de la aplicación
      */
     public ConfigPartidaUI(PrincipalUI pri) {
         this.pri = pri;
@@ -51,7 +53,9 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
 
     }
 
-    //INICIALIZACIÓN DE COMPONENTES
+    /**
+     * Inicializa los componentes utilizados en la ventana ConfigPartidaUI
+     */
     private void inicializarComponentes() {
         setLayout(null);
         setSize(600, 600);
@@ -120,7 +124,7 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
             setVisible(false);
         } else if (ae.getSource() == btnJugar) {
             if (selJugador.getItemCount() > 0) {
-                tab = new TableroUI(pri, pri.getPrinLog().getJugadores().get(selJugador.getSelectedIndex()).getId(), selDificultad.getSelectedItem().toString());
+                tab = new TableroUI(pri, pri.getPrinLog().getJugadores().get(selJugador.getSelectedIndex()).getCodigo(), selDificultad.getSelectedItem().toString());
                 tab.setVisible(true);
                 setVisible(false);
             } else {

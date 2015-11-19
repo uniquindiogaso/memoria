@@ -3,21 +3,37 @@ package logica;
 import java.util.ArrayList;
 
 /**
+ * Ésta es la clase Principal, que se encarga de manipular todas las acciones
+ * que se le hagan a los jugadores, como buscarlos, agregarlos, actualizarlos y
+ * listarlos
  *
- * @author aca los autores
+ * @author Cristian Toro, Gustavo Salgado y Laura Rúa
+ * @version 1.0
  */
 public class Principal {
 
+    //ATRIBUTOS
     private ArrayList<Jugador> jugadores;
 
+    /**
+     * Método constructor de la clase Principal que inicializa el ArrayList de jugadores
+     */
     public Principal() {
         jugadores = new ArrayList<>();
     }
 
+    /**
+     * Método constructor de la clase Principal 
+     * @param jugadores el ArrayList de jugadores
+     */
     public Principal(ArrayList<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
 
+    /**
+     * Método get del ArrayList de jugadores
+     * @return el ArrayList de jugadores
+     */
     public ArrayList<Jugador> getJugadores() {
         return jugadores;
     }
@@ -28,7 +44,7 @@ public class Principal {
 
     public int buscarJugador(int id) {
         for (int i = 0; i < jugadores.size(); i++) {
-            if (jugadores.get(i).getId() == id) {
+            if (jugadores.get(i).getCodigo() == id) {
                 return i;
             }
         }
@@ -54,7 +70,7 @@ public class Principal {
                 jugadores.get(pos).setTiempo(tiempo);
                 jugadores.get(pos).setnJugadas(jugadas);
             }
-            
+
             return true;
         }
         return false;

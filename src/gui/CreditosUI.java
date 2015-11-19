@@ -9,8 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
+ * Ésta Interfaz muestra los créditos de quienes realizaron en la aplicación
  *
  * @author Cristian Toro, Gustavo Salgado y Laura Rúa
+ * @version 1.0
  */
 public class CreditosUI extends JFrame implements ActionListener {
 
@@ -22,13 +24,19 @@ public class CreditosUI extends JFrame implements ActionListener {
 
     private PrincipalUI pri;
 
-    //MÉTODO CONSTRUCTOR
+    /**
+     * Método constructor de la clase CreditosUI
+     *
+     * @param pri objeto tipo PrincipalUI, que es la ventana principal de la aplicación
+     */
     public CreditosUI(PrincipalUI pri) {
         this.pri = pri;
         inicializarComponentes();
     }
 
-    //INICIALIZACIÓN DE COMPONENTES
+    /**
+     * Inicializa los componentes utilizados en la ventana CreditosUI
+     */
     private void inicializarComponentes() {
         setTitle("Créditos ..: Paranoic Memory :..");
         setLayout(null);

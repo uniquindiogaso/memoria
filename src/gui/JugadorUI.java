@@ -15,8 +15,9 @@ import javax.swing.JTextField;
 import javax.swing.table.JTableHeader;
 
 /**
- *
+ * Ésta Interfaz permita agregar el jugador para poder acceder el juego
  * @author Cristian Toro, Gustavo Salgado y Laura Rúa
+ * @version 1.0
  */
 public class JugadorUI extends JFrame implements ActionListener {
 
@@ -36,13 +37,19 @@ public class JugadorUI extends JFrame implements ActionListener {
 
     private PrincipalUI pri;
 
-    //MÉTODO CONSTRUCTOR
+    /**
+     * Método constructor de la clase JugadorUI
+     *
+     * @param pri objeto tipo PrincipalUI, que es la ventana principal de la aplicación
+     */
     public JugadorUI(PrincipalUI pri) {
         this.pri = pri;
         inicializarComponentes();
     }
 
-    //INICIALIZACIÓN DE COMPONENTES
+    /**
+     * Inicializa los componentes utilizados en la ventana JugadorUI
+     */
     private void inicializarComponentes() {
         setLayout(null);
         setTitle("Agregar Jugador ..: Paranoic Memory :..");
@@ -113,7 +120,7 @@ public class JugadorUI extends JFrame implements ActionListener {
     }
 
     /**
-     * Actualiza la tabla que se muestra en la ventana
+     * Actualiza la tabla con la información que está contenida en el ArrayList de los jugadores
      */
     public void actualizarTabla() {
         String datosJugadores[][] = pri.getPrinLog().listarJugadores();

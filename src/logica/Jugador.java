@@ -1,58 +1,121 @@
 package logica;
 
+/**
+ * Ésta es la clase Jugador, que se encarga de manipular los datos del jugador
+ *
+ * @author Cristian Toro, Gustavo Salgado y Laura Rúa
+ * @version 1.0
+ */
 public class Jugador {
 
-    private int id;
+    //ATRIBUTOS
+    private int codigo;
     private String nombre;
     private int nJugadas;
     private int tiempo;
 
-    public Jugador(int id, String nombre) {
-        this.id = id;
+    /**
+     * Método contructor de la clase Jugador, en el paquete logica, que
+ inicializa sólo el codigo y el nombre
+     *
+     * @param codigo el código del jugador
+     * @param nombre el nombre del jugador usado en la aplicación
+     */
+    public Jugador(int codigo, String nombre) {
+        this.codigo = codigo;
         this.nombre = nombre;
     }
 
-    public Jugador(int id, String nombre, int nJugadas, int tiempo) {
-        this.id = id;
+    /**
+     * Método constructor de la clase Jugador, en el paquete logica, que
+     * inicializa todos los atributos del jugador
+     *
+     * @param codigo el código del jugador
+     * @param nombre el nombre del jugador usado en la aplicación
+     * @param nJugadas la cantidad de jugadas hechas por el jugador
+     * @param tiempo el tiempo en el cual el jugador terminó la partida
+     */
+    public Jugador(int codigo, String nombre, int nJugadas, int tiempo) {
+        this.codigo = codigo;
         this.nombre = nombre;
         this.nJugadas = nJugadas;
         this.tiempo = tiempo;
     }
 
-    public int getId() {
-        return id;
+    //MÉTODOS GETTERS AND SETTERS
+    /**
+     * Método get del Id del jugador
+     *
+     * @return el codigo del jugador
+     */
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    /**
+     * Método set del Id del jugador
+     * @param codigo el código del jugador
+     */
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
+    /**
+     * Método get del Nombre del jugador
+     * @return el nombre del jugador
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Método set del Nombre del jugador
+     * @param nombre el nombre del jugador
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * Método get del Número de Jugadas del jugador en la partida
+     * @return el número de jugadas del jugador
+     */
     public int getnJugadas() {
         return nJugadas;
     }
 
+    /**
+     * Método set del Número de Jugadas del jugador en la partida
+     * @param nJugadas el número de jugadas del jugador
+     */
     public void setnJugadas(int nJugadas) {
         this.nJugadas = nJugadas;
     }
 
+    /**
+     * Método get del Tiempo en el que el jugador se demoró en terminar la partida
+     * @return el tiempo con el que el jugador terminó la partida
+     */
     public int getTiempo() {
         return tiempo;
     }
 
+    /**
+     * Método set del Tiempo en el que el jugador se demoró en terminar la partida
+     * @param tiempo el tiempo el jugador
+     */
     public void setTiempo(int tiempo) {
         this.tiempo = tiempo;
     }
 
+    /**
+     * Sobreescritura del método toString que muestra solamente el código y el
+     * nombre del jugador
+     *
+     * @return el código y el nombre concatenados
+     */
     @Override
     public String toString() {
-        return id + " - " + nombre;
+        return codigo + " - " + nombre;
     }
 }

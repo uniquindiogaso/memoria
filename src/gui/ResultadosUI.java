@@ -13,8 +13,10 @@ import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
 
 /**
+ * Ésta Interfaz muestra en un tabla el mejor resultados de los jugadores
  *
  * @author Cristian Toro, Gustavo Salgado y Laura Rúa
+ * @version 1.0
  */
 public class ResultadosUI extends JFrame implements ActionListener {
 
@@ -31,53 +33,20 @@ public class ResultadosUI extends JFrame implements ActionListener {
     private PrincipalUI pri;
     private ConfigPartidaUI conf;
 
-    //MÉTODO CONSTRUCTOR
+    /**
+     * Método constructor de la clase ResultadosUI
+     *
+     * @param pri objeto tipo PrincipalUI, que es la ventana principal de la aplicación
+     */
     public ResultadosUI(PrincipalUI pri) {
         this.pri = pri;
         this.conf = pri.getConfP();
 
         inicializarComponentes();
     }
-
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == btnJugar) {
-            //Si aun no ha instanciado la ventana de Configuración
-            //generar nueva instancia
-            if (conf == null) {
-                conf = new ConfigPartidaUI(pri);
-            }
-            conf.setVisible(true);
-            setVisible(false);
-        } else if (ae.getSource() == btnVolver) {
-            pri.setVisible(true);
-            setVisible(false);
-        }
-    }
-
+    
     /**
-     * Actualiza la tabla 
-     */
-    public void actualizarTabla() {
-        String datosJugadores[][] = pri.getPrinLog().listarResultados();
-        lstResultados = new JTable(datosJugadores, new String[]{"Usuario", "Jugadas", "Tiempo"});
-        lstResultados.setFont(new Font("Arial", Font.BOLD, 18));
-        lstResultados.setRowHeight(20);
-
-        //Cambiar Estilo a Encabezado
-        JTableHeader encabezado = lstResultados.getTableHeader();
-        encabezado.setPreferredSize(new Dimension(500, 32));
-        encabezado.setFont(new Font("Arial", Font.BOLD, 24));
-        //No permitir el desplazamiento del encabezado
-        encabezado.setReorderingAllowed(false);
-
-        JScrollPane scrollResultados = new JScrollPane(lstResultados);
-        scrollResultados.setBounds(75, 150, 450, 350);
-        add(scrollResultados);
-    }
-
-    /**
-     * Inicializa los componentes utilizados en la ventana
+     * Inicializa los componentes utilizados en la ventana ResultadosUI
      */
     private void inicializarComponentes() {
         setTitle("Resultados ..: Paranoic Memory :..");
@@ -112,4 +81,43 @@ public class ResultadosUI extends JFrame implements ActionListener {
         btnVolver.addActionListener(this);
     }
 
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == btnJugar) {
+            //Si aun no ha instanciado la ventana de Configuración
+            //generar nueva instancia
+            if (conf == null) {
+                conf = new ConfigPartidaUI(pri);
+            }
+            conf.setVisible(true);
+            setVisible(false);
+        } else if (ae.getSource() == btnVolver) {
+            pri.setVisible(true);
+            setVisible(false);
+        }
+    }
+
+    /**
+     * Actualiza la tabla con la información que está contenida en el ArrayList de los jugadores
+     */
+    public void actualizarTabla() {
+        String datosJugadores[][] = pri.getPrinLog().listarResultados();
+        lstResultados = new JTable(datosJugadores, new String[]{"Usuario", "Jugadas", "Tiempo"});
+        lstResultados.setFont(new Font("Arial", Font.BOLD, 18));
+        lstResultados.setRowHeight(20);
+
+        //Cambiar Estilo a Encabezado
+        JTableHeader encabezado = lstResultados.getTableHeader();
+        encabezado.setPreferredSize(new Dimension(500, 32));
+        encabezado.setFont(new Font("Arial", Font.BOLD, 24));
+        //No permitir el desplazamiento del encabezado
+        encabezado.setReorderingAllowed(false);
+
+        JScrollPane scrollResultados = new JScrollPane(lstResultados);
+        scrollResultados.setBounds(75, 150, 450, 350);
+        add(scrollResultados);
+    }
+
+   
 }

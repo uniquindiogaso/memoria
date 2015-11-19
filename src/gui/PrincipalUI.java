@@ -12,13 +12,15 @@ import logica.Principal;
 import logica.Tablero;
 
 /**
+ * Ésta es la Interfaz principal del juego que contiene las instancias a todos
+ * los menús de la aplicación
  *
  * @author Cristian Toro, Gustavo Salgado y Laura Rúa
+ * @version 1.0
  */
 public class PrincipalUI extends JFrame implements ActionListener {
 
-    public static final String IMAGENES = "../media/imagenes/";
-
+    // ATRIBUTOS
     private JLabel lLogo;
     private JButton btnJugar;
     private JButton btnRegistrar;
@@ -27,6 +29,9 @@ public class PrincipalUI extends JFrame implements ActionListener {
     private JButton btnSalir;
     private Tablero tablero;
 
+    // Constante que guarda la ruta que contiene las imagenes utilizadas en la aplicación
+    public static final String IMAGENES = "../media/imagenes/";
+
     //INSTANCIAR VENTANAS DE LA APLICACIÓN
     private ConfigPartidaUI confP;
     private CreditosUI cre;
@@ -34,6 +39,9 @@ public class PrincipalUI extends JFrame implements ActionListener {
     private ResultadosUI res;
     private Principal prinLog;
 
+    /**
+     * Método constructor de la clase PrincipalUI
+     */
     public PrincipalUI() {
         prinLog = new Principal();
         cre = new CreditosUI(this);
@@ -41,6 +49,9 @@ public class PrincipalUI extends JFrame implements ActionListener {
         inicializarComponentes();
     }
 
+    /**
+     * Inicializa los componentes utilizados en la ventana PrincipalUI
+     */
     private void inicializarComponentes() {
         setTitle("Menú Principal ..: Paranoic Memory :..");
         setLayout(null);
@@ -48,7 +59,7 @@ public class PrincipalUI extends JFrame implements ActionListener {
         setSize(600, 600);
         setLocationRelativeTo(null);
         setResizable(false);
-        
+
         tablero = new Tablero();
         lLogo = new JLabel(new ImageIcon(this.getClass().getResource(IMAGENES + "LogoTablero.png")));
         lLogo.setBounds(0, 5, 600, 66);
@@ -111,12 +122,12 @@ public class PrincipalUI extends JFrame implements ActionListener {
 
         }
     }
-    
-    //MÉTODOS GETTERS AND SETTERS
 
+    //MÉTODOS GETTERS AND SETTERS
     /**
      * Método get de JugadorUI
-     * @return jug
+     *
+     * @return jug el objeto de tipo JugadorUI
      */
     public JugadorUI getJug() {
         return jug;
@@ -124,7 +135,8 @@ public class PrincipalUI extends JFrame implements ActionListener {
 
     /**
      * Método set de JugadorUI
-     * @param jug 
+     *
+     * @param jug el objeto de tipo JugadorUI
      */
     public void setJug(JugadorUI jug) {
         this.jug = jug;
@@ -132,7 +144,8 @@ public class PrincipalUI extends JFrame implements ActionListener {
 
     /**
      * Método get de Tablero
-     * @return tablero
+     *
+     * @return tablero el objeto de tipo Tablero, en el paquete de logica
      */
     public Tablero getTablero() {
         return tablero;
@@ -140,7 +153,9 @@ public class PrincipalUI extends JFrame implements ActionListener {
 
     /**
      * Método set de tablero
-     * @param tablero 
+     *
+     * @param tablero el objeto de tipo Tablero, en el paquete de logica
+     *
      */
     public void setTablero(Tablero tablero) {
         this.tablero = tablero;
@@ -148,7 +163,8 @@ public class PrincipalUI extends JFrame implements ActionListener {
 
     /**
      * Método get de ResultadosUI
-     * @return res
+     *
+     * @return res el objeto tipo ResultadosUI
      */
     public ResultadosUI getRes() {
         return res;
@@ -156,7 +172,8 @@ public class PrincipalUI extends JFrame implements ActionListener {
 
     /**
      * Método set de ResultadosUI
-     * @param res 
+     *
+     * @param res el objeto tipo ResultadosUI
      */
     public void setRes(ResultadosUI res) {
         this.res = res;
@@ -164,7 +181,8 @@ public class PrincipalUI extends JFrame implements ActionListener {
 
     /**
      * Método get de configurarPartidaUI
-     * @return confP
+     *
+     * @return confP el objeto tipo ConfigPartidaUI
      */
     public ConfigPartidaUI getConfP() {
         return confP;
@@ -172,7 +190,8 @@ public class PrincipalUI extends JFrame implements ActionListener {
 
     /**
      * Método set de configurarPartidaUI
-     * @param confP 
+     *
+     * @param confP el objeto tipo ConfigPartidaUI
      */
     public void setConfP(ConfigPartidaUI confP) {
         this.confP = confP;
@@ -180,7 +199,8 @@ public class PrincipalUI extends JFrame implements ActionListener {
 
     /**
      * Método get de Principal - lógica
-     * @return prinLog
+     *
+     * @return prinLog el objeto tipo Principal, en el paquete logica
      */
     public Principal getPrinLog() {
         return prinLog;
@@ -188,7 +208,8 @@ public class PrincipalUI extends JFrame implements ActionListener {
 
     /**
      * Método set de Principal - lógica
-     * @param prinLog 
+     *
+     * @param prinLog el objeto tipo Principal, en el paquete logica
      */
     public void setPrinLog(Principal prinLog) {
         this.prinLog = prinLog;
