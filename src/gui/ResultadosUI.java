@@ -36,7 +36,8 @@ public class ResultadosUI extends JFrame implements ActionListener {
     /**
      * Método constructor de la clase ResultadosUI
      *
-     * @param pri objeto tipo PrincipalUI, que es la ventana principal de la aplicación
+     * @param pri objeto tipo PrincipalUI, que es la ventana principal de la
+     * aplicación
      */
     public ResultadosUI(PrincipalUI pri) {
         this.pri = pri;
@@ -44,7 +45,7 @@ public class ResultadosUI extends JFrame implements ActionListener {
 
         inicializarComponentes();
     }
-    
+
     /**
      * Inicializa los componentes utilizados en la ventana ResultadosUI
      */
@@ -81,15 +82,10 @@ public class ResultadosUI extends JFrame implements ActionListener {
         btnVolver.addActionListener(this);
     }
 
-
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnJugar) {
-            //Si aun no ha instanciado la ventana de Configuración
-            //generar nueva instancia
-            if (conf == null) {
-                conf = new ConfigPartidaUI(pri);
-            }
+            conf = new ConfigPartidaUI(pri);
             conf.setVisible(true);
             setVisible(false);
         } else if (ae.getSource() == btnVolver) {
@@ -99,7 +95,8 @@ public class ResultadosUI extends JFrame implements ActionListener {
     }
 
     /**
-     * Actualiza la tabla con la información que está contenida en el ArrayList de los jugadores
+     * Actualiza la tabla con la información que está contenida en el ArrayList
+     * de los jugadores
      */
     public void actualizarTabla() {
         String datosJugadores[][] = pri.getPrinLog().listarResultados();
@@ -119,5 +116,4 @@ public class ResultadosUI extends JFrame implements ActionListener {
         add(scrollResultados);
     }
 
-   
 }
