@@ -30,6 +30,8 @@ public class Principal {
         this.jugadores = jugadores;
     }
 
+    //MÉTODOS GETTERS AND SETTERS
+    
     /**
      * Método get del ArrayList de jugadores
      * @return el ArrayList de jugadores
@@ -46,6 +48,8 @@ public class Principal {
         this.jugadores = jugadores;
     }
 
+    //MÉTODOS
+    
     /**
      * Busca el jugador dentro del ArrayList
      * @param codigo el código del jugador a buscar
@@ -92,7 +96,6 @@ public class Principal {
                 jugadores.get(pos).setTiempo(tiempo);
                 jugadores.get(pos).setnJugadas(jugadas);
             }
-
             return true;
         }
         return false;

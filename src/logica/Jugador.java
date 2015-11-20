@@ -28,7 +28,7 @@ public class Jugador {
 
     //MÉTODOS GETTERS AND SETTERS
     /**
-     * Método get del Id del jugador
+     * Método get del Código del jugador
      *
      * @return el codigo del jugador
      */
@@ -37,7 +37,7 @@ public class Jugador {
     }
 
     /**
-     * Método set del Id del jugador
+     * Método set del Código del jugador
      * @param codigo el código del jugador
      */
     public void setCodigo(int codigo) {

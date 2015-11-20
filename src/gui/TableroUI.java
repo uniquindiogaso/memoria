@@ -41,7 +41,7 @@ public class TableroUI extends JFrame implements ActionListener {
     private boolean bandera;
     private int parejasEncontradas;
     private int numJugadas;
-    private int id;
+    private int codigo;
 
     private PrincipalUI pri;
     private ResultadosUI res;
@@ -51,14 +51,14 @@ public class TableroUI extends JFrame implements ActionListener {
      * Método constructor de la clase TableroUI
      *
      * @param pri objeto tipo PrincipalUI, que es la ventana principal de la aplicación
-     * @param id el código del jugador que va a jugar la partida
+     * @param codigo el código del jugador que va a jugar la partida
      * @param dificultad el grado de doficultad con la cual el jugador jugará la partida
      */
-    public TableroUI(PrincipalUI pri, int id, String dificultad) {
+    public TableroUI(PrincipalUI pri, int codigo, String dificultad) {
         this.pri = pri;
         tablero = new Tablero();
         this.dificultad = dificultad;
-        this.id = id;
+        this.codigo = codigo;
         bandera = false;
         inicializarComponetes();
     }
@@ -205,7 +205,7 @@ public class TableroUI extends JFrame implements ActionListener {
 
                             if (parejasEncontradas == (FILAS * COLUMNAS) / 2) {
                                 tablero.pararCronometro();
-                                if (pri.getPrinLog().actualizarPuntajes(id, Integer.valueOf(lTiempo.getText()), numJugadas)) {
+                                if (pri.getPrinLog().actualizarPuntajes(codigo, Integer.valueOf(lTiempo.getText()), numJugadas)) {
                                     lGanador.setVisible(true);
                                 } else {
                                     JOptionPane.showMessageDialog(null, "No se logró actualizar su puntaje", "Upss!", JOptionPane.ERROR_MESSAGE);
