@@ -60,8 +60,8 @@ public class Tablero {
      * Verifica que el valor contenido en dos posiciones de una matriz
      * sea el mismo
      * @param matrizAleatoria Matriz que contiene numeros aleatorios
-     * @param primeraJugada Arreglo que contiene la posicion i & j del contenido de la primera jugada
-     * @param segundaJugada Arreglo que contiene la posicion i & j del contenido de la segunda jugada
+     * @param primeraJugada Arreglo que contiene la posicion i - j del contenido de la primera jugada
+     * @param segundaJugada Arreglo que contiene la posicion i - j del contenido de la segunda jugada
      * @return Verdadero si el valor en ambas posiciones es el mismo , falso si no coinciden los valores.
      */
     public boolean analizarJugada(int[][] matrizAleatoria, int[] primeraJugada, int[] segundaJugada) {
@@ -113,9 +113,9 @@ public class Tablero {
      * Obtener Ruta Imagen En base a la dificultad y la numero aleatorio se
      * genera una cadena que contiene la ruta completa de la imagen
      *
-     * @param dificultad
-     * @param pos
-     * @return
+     * @param dificultad carpeta donde se exploraran las imagnes
+     * @param pos nombre de la imagen que se va a abrir
+     * @return Url formada con la ruta de la imagen o null si no se logro formar
      */
     public URL obtenerImagen(String dificultad, int pos) {
         return this.getClass().getResource(PrincipalUI.IMAGENES + dificultad.toLowerCase() + "/" + pos + ".png");
