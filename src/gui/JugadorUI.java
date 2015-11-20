@@ -16,6 +16,7 @@ import javax.swing.table.JTableHeader;
 
 /**
  * Ésta Interfaz permita agregar el jugador para poder acceder el juego
+ *
  * @author Cristian Toro, Gustavo Salgado y Laura Rúa
  * @version 1.0
  */
@@ -40,7 +41,8 @@ public class JugadorUI extends JFrame implements ActionListener {
     /**
      * Método constructor de la clase JugadorUI
      *
-     * @param pri objeto tipo PrincipalUI, que es la ventana principal de la aplicación
+     * @param pri objeto tipo PrincipalUI, que es la ventana principal de la
+     * aplicación
      */
     public JugadorUI(PrincipalUI pri) {
         this.pri = pri;
@@ -101,6 +103,11 @@ public class JugadorUI extends JFrame implements ActionListener {
         btnVolver.addActionListener(this);
     }
 
+    /**
+     * Gestor de eventos generados en la ventana
+     *
+     * @param ae - origen del evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnAgregar) {
@@ -120,7 +127,8 @@ public class JugadorUI extends JFrame implements ActionListener {
     }
 
     /**
-     * Actualiza la tabla con la información que está contenida en el ArrayList de los jugadores
+     * Actualiza la tabla con la información que está contenida en el ArrayList
+     * de los jugadores
      */
     public void actualizarTabla() {
         String datosJugadores[][] = pri.getPrinLog().listarJugadores();

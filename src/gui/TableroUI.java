@@ -12,6 +12,7 @@ import logica.Tablero;
 
 /**
  * Ésta Interfaz muestra la pantalla del juego
+ *
  * @author Cristian Toro, Gustavo Salgado y Laura Rúa
  * @version 1.0
  */
@@ -50,9 +51,11 @@ public class TableroUI extends JFrame implements ActionListener {
     /**
      * Método constructor de la clase TableroUI
      *
-     * @param pri objeto tipo PrincipalUI, que es la ventana principal de la aplicación
+     * @param pri objeto tipo PrincipalUI, que es la ventana principal de la
+     * aplicación
      * @param codigo el código del jugador que va a jugar la partida
-     * @param dificultad el grado de doficultad con la cual el jugador jugará la partida
+     * @param dificultad el grado de doficultad con la cual el jugador jugará la
+     * partida
      */
     public TableroUI(PrincipalUI pri, int codigo, String dificultad) {
         this.pri = pri;
@@ -130,6 +133,11 @@ public class TableroUI extends JFrame implements ActionListener {
 
     }
 
+    /**
+     * Gestor de eventos generados en la ventana
+     *
+     * @param ae - origen del evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnVolver) {
@@ -147,7 +155,8 @@ public class TableroUI extends JFrame implements ActionListener {
     }
 
     /**
-     * Al dar clic sobre el botón repetir se genera una nueva partida con jugadas y tiempo desde cero
+     * Al dar clic sobre el botón repetir se genera una nueva partida con
+     * jugadas y tiempo desde cero
      */
     private void accionRepetirJuego() {
         parejasEncontradas = 0;
@@ -168,6 +177,7 @@ public class TableroUI extends JFrame implements ActionListener {
 
     /**
      * Verifica las jugadas del jugador a través de los clics que éste realice
+     *
      * @param ae objeto tipo ActionEvent que gestiona los eventos de la ventana
      */
     private void accionVerificarJugada(ActionEvent ae) {
@@ -178,7 +188,7 @@ public class TableroUI extends JFrame implements ActionListener {
                     if (!(btnJugadas[i][j].getIcon().toString().equals(defaultIcon.toString()))) {
                         break;
                     }
-                    
+
                     //Aumentar la Cantidad de Jugadas Realizadas
                     lJugadas.setText(String.valueOf(++numJugadas));
 

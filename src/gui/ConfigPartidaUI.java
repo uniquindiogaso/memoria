@@ -14,7 +14,9 @@ import javax.swing.JOptionPane;
 import logica.Jugador;
 
 /**
- * Ésta Interfaz permite configurar la partida, determinando el jugador y la dificultad del juego
+ * Ésta Interfaz permite configurar la partida, determinando el jugador y la
+ * dificultad del juego
+ *
  * @author Cristian Toro, Gustavo Salgado y Laura Rúa
  * @version 1.0
  */
@@ -40,10 +42,11 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
     // Listado de jugadores
     private ArrayList<Jugador> jugadores;
 
-    
     /**
      * Método constructor de la clase ConfigPartidaUI
-     * @param pri objeto tipo PrincipalUI, que es la ventana principal de la aplicación
+     *
+     * @param pri objeto tipo PrincipalUI, que es la ventana principal de la
+     * aplicación
      */
     public ConfigPartidaUI(PrincipalUI pri) {
         this.pri = pri;
@@ -90,7 +93,7 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         add(lSelDificultad);
         selDificultad.setBounds(50, 285, 500, 50);
         getContentPane().add(selDificultad);
-        
+
         btnAgregarJugador = new JButton("Agregar Jugador");
         btnAgregarJugador.setBounds(410, 195, 150, 35);
         btnAgregarJugador.setFont(new Font("Arial", Font.BOLD, 15));
@@ -115,6 +118,11 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
         btnVolver.addActionListener(this);
     }
 
+    /**
+     * Gestor de eventos generados en la ventana
+     *
+     * @param ae - origen del evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnAgregarJugador) {
@@ -141,8 +149,8 @@ public class ConfigPartidaUI extends JFrame implements ActionListener {
      */
     public void actualizarListJugadores() {
         for (Jugador j : pri.getPrinLog().getJugadores()) {
-                selJugador.addItem(j);
+            selJugador.addItem(j);
         }
     }
-    
+
 }

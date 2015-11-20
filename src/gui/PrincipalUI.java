@@ -97,6 +97,11 @@ public class PrincipalUI extends JFrame implements ActionListener {
 
     }
 
+    /**
+     * Gestor de eventos generados en la ventana
+     *
+     * @param ae - origen del evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnJugar) {

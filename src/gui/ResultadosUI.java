@@ -82,6 +82,11 @@ public class ResultadosUI extends JFrame implements ActionListener {
         btnVolver.addActionListener(this);
     }
 
+    /**
+     * Gestor de eventos generados en la ventana
+     *
+     * @param ae - origen del evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == btnJugar) {

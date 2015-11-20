@@ -27,7 +27,8 @@ public class CreditosUI extends JFrame implements ActionListener {
     /**
      * Método constructor de la clase CreditosUI
      *
-     * @param pri objeto tipo PrincipalUI, que es la ventana principal de la aplicación
+     * @param pri objeto tipo PrincipalUI, que es la ventana principal de la
+     * aplicación
      */
     public CreditosUI(PrincipalUI pri) {
         this.pri = pri;
@@ -61,6 +62,11 @@ public class CreditosUI extends JFrame implements ActionListener {
         btnVolver.addActionListener(this);
     }
 
+    /**
+     * Gestor de eventos generados en la ventana
+     *
+     * @param ae - origen del evento
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         pri.setVisible(true);
