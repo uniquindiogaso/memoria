@@ -92,7 +92,7 @@ public class Tablero {
         //Definir tarea de tiempo
         TimerTask timerTask = new TimerTask() {
             int segundos = 0;
-            //Cada que el schedule(programador) se deba ejecitar ( 1 segundo = 1000 milisegundos)
+            //Cada que el schedule(programador) se deba ejecutar ( 1 segundo = 1000 milisegundos)
             //actualizara el valor del label pasado como parametro
             public void run() {
                 label.setText(String.valueOf(++segundos));

@@ -100,8 +100,10 @@ public class TableroUI extends JFrame implements ActionListener {
         add(lGanador);
         lGanador.setVisible(false);
 
+        //Construir matriz de numeros aleatorios de acuerdo al numero de filas y columnas    
         matrizAleatoria = tablero.construirTablero(FILAS, COLUMNAS);
 
+        //Construir la matriz de botones de acuerdo a el tamanio de matrizAleatoria
         for (int i = 0; i < btnJugadas.length; i++) {
             for (int j = 0; j < btnJugadas[i].length; j++) {
                 btnJugadas[i][j] = new JButton(defaultIcon);
@@ -159,14 +161,17 @@ public class TableroUI extends JFrame implements ActionListener {
      * jugadas y tiempo desde cero
      */
     private void accionRepetirJuego() {
-        parejasEncontradas = 0;
+        parejasEncontradas = 0; //reiniciar el contador de parejas
         tablero.pararCronometro();
         lTiempo.setText("0");
         lGanador.setVisible(false);
-        numJugadas = 0;
+        numJugadas = 0; // reiniciar el contador de jugadas
         lJugadas.setText(String.valueOf(numJugadas));
+        //vuelve a construir el tablero de numeros de manera aleatoria
         matrizAleatoria = tablero.construirTablero(FILAS, COLUMNAS);
 
+        //Reinicia el icono de todos los botones
+        // y activa todos los botones
         for (JButton[] btnJugada : btnJugadas) {
             for (JButton btnJugada1 : btnJugada) {
                 btnJugada1.setIcon(defaultIcon);
@@ -185,6 +190,12 @@ public class TableroUI extends JFrame implements ActionListener {
             for (int j = 0; j < btnJugadas[i].length; j++) {
                 if (ae.getSource() == btnJugadas[i][j]) {
 
+                    /**
+                     * Para evitar el doble clic y que se no se cuente como pareja el mismo 
+                     * botonn, se compara la imagen que le correspondera al boton con la imagen
+                     * por defecto, si son diferentes rompa la ejecucion del for y no tenga
+                     * en cuenta nada.
+                     */
                     if (!(btnJugadas[i][j].getIcon().toString().equals(defaultIcon.toString()))) {
                         break;
                     }
@@ -197,22 +208,28 @@ public class TableroUI extends JFrame implements ActionListener {
                         tablero.iniciarCronometro(lTiempo);
                     }
 
+                    //Asigna la imagen que le corresponde de acuerdo a la posicion y dificultad seleccionadas
                     btnJugadas[i][j].setIcon(new ImageIcon(tablero.obtenerImagen(dificultad, matrizAleatoria[i][j])));
 
+                    //Evular jugadas pares
                     if (numJugadas % 2 == 0) {
-
+                        //Guardar posiciones de la segunda jugada
                         posSegundaJugada = new int[]{i, j};
-
+                        //Analizar si la jugada1 y la jugada2 son iguales y almacnearlas en variable boolean
                         boolean pareja = tablero.analizarJugada(matrizAleatoria, posPrimeraJugada, posSegundaJugada);
-
+                        
+                        //Si son parejas desactivarlas
                         if (pareja) {
                             btnJugadas[posPrimeraJugada[0]][posPrimeraJugada[1]].setEnabled(false);
                             btnJugadas[posPrimeraJugada[0]][posPrimeraJugada[1]].setOpaque(false);
                             btnJugadas[posSegundaJugada[0]][posSegundaJugada[1]].setEnabled(false);
                             btnJugadas[posSegundaJugada[0]][posSegundaJugada[1]].setOpaque(false);
-
+                            
+                            //Aumentar el numero de parejas encontradas en 1
                             ++parejasEncontradas;
-
+                            
+                            //Verificar cada que encuentre una pareja si ya termino
+                            // para actualizar puntajes e indicar que ha ganado
                             if (parejasEncontradas == (FILAS * COLUMNAS) / 2) {
                                 tablero.pararCronometro();
                                 if (pri.getPrinLog().actualizarPuntajes(codigo, Integer.valueOf(lTiempo.getText()), numJugadas)) {
@@ -222,15 +239,17 @@ public class TableroUI extends JFrame implements ActionListener {
                                 }
                             }
                         } else {
+                            //Si no es pareja, en la prixma jugada debera "tapar" los botones
                             bandera = true;
                         }
                     } else {
-
+                        //Si debe tapar las parejas , entrara a la condicion
                         if (bandera) {
                             btnJugadas[posPrimeraJugada[0]][posPrimeraJugada[1]].setIcon(defaultIcon);
                             btnJugadas[posSegundaJugada[0]][posSegundaJugada[1]].setIcon(defaultIcon);
                             bandera = false;
                         }
+                        //Capturar la posicion de la jugad 1
                         posPrimeraJugada = new int[]{i, j};
                     }
 
